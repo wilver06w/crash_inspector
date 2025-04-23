@@ -1,4 +1,4 @@
-import 'package:effective_error_handling/src/shared/utils/ui.dart';
+import 'package:crash_inspector/src/shared/utils/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

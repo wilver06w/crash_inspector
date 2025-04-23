@@ -1,4 +1,4 @@
-import 'package:effective_error_handling/generated/l10n.dart';
+import 'package:crash_inspector/generated/l10n.dart';
 
 class UtilGlobals {
   static String formatDateDayAndMothAndYear({required DateTime date}) {

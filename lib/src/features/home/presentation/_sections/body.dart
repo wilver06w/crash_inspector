@@ -1,4 +1,4 @@
-part of 'package:effective_error_handling/src/features/home/presentation/page.dart';
+part of 'package:crash_inspector/src/features/home/presentation/page.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -9,46 +9,56 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Padding(
-        padding: EdgeInsets.all(16),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              S.current.crashInspector,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.add_circle_outline_outlined,
+              ),
+            ),
+          ],
+        ),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Expanded(
-                child: BlocBuilder<BlocOrders, OrdersState>(
-                  builder: (context, state) {
-                    final listArchetype = state.model.listArchetype ?? [];
+        child: Column(
+          children: [
+            Expanded(
+              child: BlocBuilder<BlocOrders, OrdersState>(
+                builder: (context, state) {
+                  final listArchetype = state.model.listArchetype ?? [];
 
-                    return ListView.builder(
-                      itemCount: listArchetype.length,
-                      itemBuilder: (context, index) {
-                        final item = listArchetype[index];
-                        return MyCard(
-                          data: item,
-                          onTapDelete: () {},
-                          onTap: () async {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  S.current.detailOrderNumber(
-                                    item.archetypeName,
-                                  ),
+                  return ListView.builder(
+                    itemCount: listArchetype.length,
+                    itemBuilder: (context, index) {
+                      final item = listArchetype[index];
+                      return MyCard(
+                        data: item,
+                        onTapDelete: () {},
+                        onTap: () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                S.current.detailArchetype(
+                                  item.archetypeName,
                                 ),
-                                backgroundColor: Colors.red,
                               ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                ),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -105,11 +105,11 @@ class S {
     return Intl.message('Buscar', name: 'search', desc: '', args: []);
   }
 
-  /// `Detalles del pedido # {value}`
-  String detailOrderNumber(Object value) {
+  /// `Detalles del archetype # {value}`
+  String detailArchetype(Object value) {
     return Intl.message(
-      'Detalles del pedido # $value',
-      name: 'detailOrderNumber',
+      'Detalles del archetype # $value',
+      name: 'detailArchetype',
       desc: '',
       args: [value],
     );
@@ -122,6 +122,16 @@ class S {
       name: 'clientValue',
       desc: '',
       args: [value],
+    );
+  }
+
+  /// `Crash Inspector`
+  String get crashInspector {
+    return Intl.message(
+      'Crash Inspector',
+      name: 'crashInspector',
+      desc: '',
+      args: [],
     );
   }
 }

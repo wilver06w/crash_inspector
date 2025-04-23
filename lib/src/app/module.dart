@@ -1,13 +1,13 @@
-import 'package:effective_error_handling/src/features/home/inject.dart';
-import 'package:effective_error_handling/src/shared/http/http_client.dart';
-import 'package:effective_error_handling/src/shared/module.dart';
+import 'package:crash_inspector/src/features/detail/inject.dart';
+import 'package:crash_inspector/src/shared/http/http_client.dart';
+import 'package:crash_inspector/src/shared/module.dart';
 
 class AppModule extends Module {
   @override
   void binds(Injector i) {
     i.addLazySingleton<HttpClient>(HttpClient.new);
 
-    InjectHome.binds(i);
+    InjectDetail.binds(i);
   }
 
   @override

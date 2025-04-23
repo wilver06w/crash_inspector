@@ -1,4 +1,4 @@
-part of 'package:crash_inspector/src/features/home/presentation/page.dart';
+part of 'package:crash_inspector/src/features/detail/presentation/page.dart';
 
 class MyCard extends StatelessWidget {
   const MyCard({

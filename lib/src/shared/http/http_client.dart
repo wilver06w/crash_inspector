@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:effective_error_handling/src/shared/http/dio.dart';
+import 'package:crash_inspector/src/shared/http/dio.dart';
 
 export 'package:dio/dio.dart';
 export 'package:flutter_modular/flutter_modular.dart';

@@ -7,5 +7,6 @@
   "ofOf": "de",
   "search": "Buscar",
   "detailArchetype":"Detalles del archetype # {value}",
-  "clientValue":"Cliente {value}"
+  "clientValue":"Cliente {value}",
+  "crashInspector": "Crash Inspector"
 }

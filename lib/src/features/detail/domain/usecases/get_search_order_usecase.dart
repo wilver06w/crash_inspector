@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:effective_error_handling/src/features/home/data/models/get_orders.dart';
-import 'package:effective_error_handling/src/features/home/domain/repositories/abstract_orders_repository.dart';
-import 'package:effective_error_handling/src/shared/http/failures.dart';
+import 'package:crash_inspector/src/features/detail/data/models/get_orders.dart';
+import 'package:crash_inspector/src/features/detail/domain/repositories/abstract_orders_repository.dart';
+import 'package:crash_inspector/src/shared/http/failures.dart';
 
 class GetSearchOrdersUseCase {
   GetSearchOrdersUseCase({

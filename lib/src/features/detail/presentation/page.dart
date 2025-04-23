@@ -2,16 +2,15 @@ import 'package:crash_inspector/generated/l10n.dart';
 import 'package:crash_inspector/src/features/detail/data/models/archetype.dart';
 import 'package:crash_inspector/src/features/detail/domain/usecases/get_order_usecase.dart';
 import 'package:crash_inspector/src/features/detail/domain/usecases/get_search_order_usecase.dart';
-
-import 'package:crash_inspector/src/features/home/presentation/bloc/bloc.dart';
+import 'package:crash_inspector/src/features/detail/presentation/bloc/bloc.dart';
 import 'package:crash_inspector/src/shared/http/http_client.dart'
     hide ModularWatchExtension;
 import 'package:crash_inspector/src/shared/utils/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'package:crash_inspector/src/features/home/presentation/_sections/body.dart';
-part 'package:crash_inspector/src/features/home/presentation/_sections/my_card.dart';
+part 'package:crash_inspector/src/features/detail/presentation/_sections/body.dart';
+part 'package:crash_inspector/src/features/detail/presentation/_sections/my_card.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
