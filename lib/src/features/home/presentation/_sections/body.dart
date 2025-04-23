@@ -17,7 +17,9 @@ class Body extends StatelessWidget {
               S.current.crashInspector,
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                VakaRoute.navAdd();
+              },
               icon: const Icon(
                 Icons.add_circle_outline_outlined,
               ),

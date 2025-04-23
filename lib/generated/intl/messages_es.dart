@@ -31,6 +31,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addNewSource": MessageLookupByLibrary.simpleMessage(
+      "Agregar nueva fuente",
+    ),
+    "addNewSourceOptions": MessageLookupByLibrary.simpleMessage(
+      "Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles",
+    ),
     "clientValue": m0,
     "crashInspector": MessageLookupByLibrary.simpleMessage("Crash Inspector"),
     "detailArchetype": m1,

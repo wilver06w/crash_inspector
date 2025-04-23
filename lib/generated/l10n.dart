@@ -134,6 +134,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Agregar nueva fuente`
+  String get addNewSource {
+    return Intl.message(
+      'Agregar nueva fuente',
+      name: 'addNewSource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles`
+  String get addNewSourceOptions {
+    return Intl.message(
+      'Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles',
+      name: 'addNewSourceOptions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

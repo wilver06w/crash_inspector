@@ -8,5 +8,7 @@
   "search": "Buscar",
   "detailArchetype":"Detalles del archetype # {value}",
   "clientValue":"Cliente {value}",
-  "crashInspector": "Crash Inspector"
+  "crashInspector": "Crash Inspector",
+  "addNewSource": "Agregar nueva fuente",
+  "addNewSourceOptions": "Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles"
 }
