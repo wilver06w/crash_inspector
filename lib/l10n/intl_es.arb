@@ -1,0 +1,11 @@
+{
+  "noConection":"No conexion",
+  "welcome":"Bievenido",
+  "weHaveAErrorContactSuport": "Error {code} \nSi el error persiste, contacta a soporte",
+  "serviceNotAvailable": "Servicio no disponible",
+  "orderNumber":"Pedido # {value}",
+  "ofOf": "de",
+  "search": "Buscar",
+  "detailArchetype":"Detalles del archetype # {value}",
+  "clientValue":"Cliente {value}"
+}
