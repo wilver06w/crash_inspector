@@ -1,47 +1,31 @@
 part of 'bloc.dart';
 
-abstract class OrdersState extends Equatable {
-  const OrdersState(this.model);
+abstract class AddState extends Equatable {
+  const AddState(this.model);
   final Model model;
 
   @override
   List<Object?> get props => [model];
 }
 
-class InitialState extends OrdersState {
+class InitialState extends AddState {
   const InitialState(super.model);
 }
 
-class ErrorGetOrderState extends OrdersState {
-  const ErrorGetOrderState({
-    required Model model,
-    required this.message,
-  }) : super(model);
-  final String message;
+class LoadedChangeSource extends AddState {
+  const LoadedChangeSource(super.model);
 }
 
-class LoadedGetOrderState extends OrdersState {
-  const LoadedGetOrderState(super.model);
+class LoadedChangeSentryOrganizationId extends AddState {
+  const LoadedChangeSentryOrganizationId(super.model);
 }
 
-class LoadingGetSearchOrderState extends OrdersState {
-  const LoadingGetSearchOrderState(super.model);
+class LoadedChangeSentryProjectId extends AddState {
+  const LoadedChangeSentryProjectId(super.model);
 }
 
-class ErrorGetSearchOrderState extends OrdersState {
-  const ErrorGetSearchOrderState({
-    required Model model,
-    required this.message,
-  }) : super(model);
-  final String message;
-}
-
-class LoadedGetSearchOrderState extends OrdersState {
-  const LoadedGetSearchOrderState(super.model);
-}
-
-class LoadingGetOrderState extends OrdersState {
-  const LoadingGetOrderState(super.model);
+class LoadedChangeSentryToken extends AddState {
+  const LoadedChangeSentryToken(super.model);
 }
 
 class Model extends Equatable {
@@ -51,22 +35,48 @@ class Model extends Equatable {
       'Crashlytics',
       'Other',
     ],
+    this.selectedSource,
+    this.sentryOrganizationId = '',
+    this.sentryProjectId = '',
+    this.sentryToken = '',
   });
 
   final List<String>? sources;
+  final String? selectedSource;
+  final String sentryOrganizationId;
+  final String sentryProjectId;
+  final String sentryToken;
 
   Model copyWith({
     List<String>? sources,
+    String? selectedSource,
+    String? sentryOrganizationId,
+    String? sentryProjectId,
+    String? sentryToken,
   }) {
     return Model(
       sources: sources ?? this.sources,
+      selectedSource: selectedSource ?? this.selectedSource,
+      sentryOrganizationId: sentryOrganizationId ?? this.sentryOrganizationId,
+      sentryProjectId: sentryProjectId ?? this.sentryProjectId,
+      sentryToken: sentryToken ?? this.sentryToken,
     );
   }
+
+  bool get isFormFilledCompleted =>
+      selectedSource == 'Sentry' &&
+      sentryOrganizationId.isNotEmpty &&
+      sentryProjectId.isNotEmpty &&
+      sentryToken.isNotEmpty;
 
   @override
   List<Object?> get props {
     return [
       sources,
+      selectedSource,
+      sentryOrganizationId,
+      sentryProjectId,
+      sentryToken,
     ];
   }
 }

@@ -1,22 +1,54 @@
 part of 'bloc.dart';
 
-abstract class OrdersEvent extends Equatable {
-  const OrdersEvent();
+abstract class AddEvent extends Equatable {
+  const AddEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class GetOrderListEvent extends OrdersEvent {
+class GetOrderListEvent extends AddEvent {
   const GetOrderListEvent({
     this.page = 1,
   });
   final int page;
 }
 
-class SearchOrdersEvent extends OrdersEvent {
+class SearchOrdersEvent extends AddEvent {
   const SearchOrdersEvent({
     this.search = '',
   });
   final String search;
+}
+
+class UpdateSelectedSourceEvent extends AddEvent {
+  const UpdateSelectedSourceEvent({required this.selectedSource});
+  final String selectedSource;
+
+  @override
+  List<Object?> get props => [selectedSource];
+}
+
+class UpdateSentryOrganizationIdEvent extends AddEvent {
+  const UpdateSentryOrganizationIdEvent({required this.organizationId});
+  final String organizationId;
+
+  @override
+  List<Object?> get props => [organizationId];
+}
+
+class UpdateSentryProjectIdEvent extends AddEvent {
+  const UpdateSentryProjectIdEvent({required this.projectId});
+  final String projectId;
+
+  @override
+  List<Object?> get props => [projectId];
+}
+
+class UpdateSentryTokenEvent extends AddEvent {
+  const UpdateSentryTokenEvent({required this.token});
+  final String token;
+
+  @override
+  List<Object?> get props => [token];
 }

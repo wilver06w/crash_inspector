@@ -43,10 +43,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "noConection": MessageLookupByLibrary.simpleMessage("No conexion"),
     "ofOf": MessageLookupByLibrary.simpleMessage("de"),
     "orderNumber": m2,
+    "organizationId": MessageLookupByLibrary.simpleMessage("Organization ID"),
+    "projectId": MessageLookupByLibrary.simpleMessage("Project ID"),
+    "saveConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Guardar configuración",
+    ),
+    "savingConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Guardando configuración",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Buscar"),
+    "selectASource": MessageLookupByLibrary.simpleMessage(
+      "Selecciona una fuente",
+    ),
+    "selectCrashSource": MessageLookupByLibrary.simpleMessage(
+      "Selecciona la fuente de crash",
+    ),
     "serviceNotAvailable": MessageLookupByLibrary.simpleMessage(
       "Servicio no disponible",
     ),
+    "token": MessageLookupByLibrary.simpleMessage("Token"),
     "weHaveAErrorContactSuport": m3,
     "welcome": MessageLookupByLibrary.simpleMessage("Bievenido"),
   };

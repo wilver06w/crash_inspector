@@ -21,6 +21,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   lottie: ^3.1.1
+  shared_preferences: ^2.5.3
 
 flutter_intl:
   main_locale: es

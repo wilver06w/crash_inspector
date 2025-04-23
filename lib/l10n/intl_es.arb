@@ -10,5 +10,12 @@
   "clientValue":"Cliente {value}",
   "crashInspector": "Crash Inspector",
   "addNewSource": "Agregar nueva fuente",
-  "addNewSourceOptions": "Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles"
+  "addNewSourceOptions": "Puedes agregar una nueva fuente entre Sentry, Crashlytics y otras opciones disponibles",
+  "selectCrashSource": "Selecciona la fuente de crash",
+  "selectASource": "Selecciona una fuente",
+  "organizationId": "Organization ID",
+  "projectId": "Project ID",
+  "token": "Token",
+  "saveConfiguration": "Guardar configuración",
+  "savingConfiguration": "Guardando configuración"
 }

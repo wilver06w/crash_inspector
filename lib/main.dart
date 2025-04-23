@@ -1,11 +1,15 @@
 import 'package:crash_inspector/generated/l10n.dart';
 import 'package:crash_inspector/src/app/module.dart';
+import 'package:crash_inspector/src/shared/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = Preferences();
+  await prefs.init();
 
   runApp(
     ModularApp(

@@ -154,6 +154,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Selecciona la fuente de crash`
+  String get selectCrashSource {
+    return Intl.message(
+      'Selecciona la fuente de crash',
+      name: 'selectCrashSource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selecciona una fuente`
+  String get selectASource {
+    return Intl.message(
+      'Selecciona una fuente',
+      name: 'selectASource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Organization ID`
+  String get organizationId {
+    return Intl.message(
+      'Organization ID',
+      name: 'organizationId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Project ID`
+  String get projectId {
+    return Intl.message('Project ID', name: 'projectId', desc: '', args: []);
+  }
+
+  /// `Token`
+  String get token {
+    return Intl.message('Token', name: 'token', desc: '', args: []);
+  }
+
+  /// `Guardar configuración`
+  String get saveConfiguration {
+    return Intl.message(
+      'Guardar configuración',
+      name: 'saveConfiguration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guardando configuración`
+  String get savingConfiguration {
+    return Intl.message(
+      'Guardando configuración',
+      name: 'savingConfiguration',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

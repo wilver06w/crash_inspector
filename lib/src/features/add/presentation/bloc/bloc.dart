@@ -1,80 +1,63 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:crash_inspector/src/features/detail/domain/usecases/get_order_usecase.dart';
-import 'package:crash_inspector/src/features/detail/domain/usecases/get_search_order_usecase.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'event.dart';
 part 'state.dart';
 
-class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
-  BlocOrders({
-    required this.getOrdersUseCase,
-    required this.getSearchOrdersUseCase,
-  }) : super(const InitialState(Model())) {
-    on<GetOrderListEvent>(_onGetOrderListEvent);
-    on<SearchOrdersEvent>(_onSearchOrdersEvent);
+class AddBloc extends Bloc<AddEvent, AddState> {
+  AddBloc() : super(const InitialState(Model())) {
+    on<UpdateSelectedSourceEvent>(_onUpdateSelectedSource);
+    on<UpdateSentryOrganizationIdEvent>(_onUpdateSentryOrganizationId);
+    on<UpdateSentryProjectIdEvent>(_onUpdateSentryProjectId);
+    on<UpdateSentryTokenEvent>(_onUpdateSentryToken);
   }
 
-  final GetOrdersUseCase getOrdersUseCase;
-  final GetSearchOrdersUseCase getSearchOrdersUseCase;
-
-  Future<void> _onGetOrderListEvent(
-    GetOrderListEvent event,
-    Emitter<OrdersState> emit,
-  ) async {
+  void _onUpdateSelectedSource(
+    UpdateSelectedSourceEvent event,
+    Emitter<AddState> emit,
+  ) {
     emit(
-      LoadingGetOrderState(
-        state.model,
+      LoadedChangeSource(
+        state.model.copyWith(
+          selectedSource: event.selectedSource,
+        ),
       ),
     );
-
-    final getOrders = await getOrdersUseCase.getOrders();
-
-    getOrders.fold((l) {
-      emit(
-        ErrorGetOrderState(
-          model: state.model,
-          message: l.errorMessage,
-        ),
-      );
-    }, (r) {
-      emit(
-        LoadedGetOrderState(
-          state.model.copyWith(
-              // sources: r,
-              ),
-        ),
-      );
-    });
   }
 
-  Future<void> _onSearchOrdersEvent(
-    SearchOrdersEvent event,
-    Emitter<OrdersState> emit,
-  ) async {
-    emit(LoadingGetSearchOrderState(state.model));
+  void _onUpdateSentryOrganizationId(
+    UpdateSentryOrganizationIdEvent event,
+    Emitter<AddState> emit,
+  ) {
+    emit(LoadedChangeSentryOrganizationId(state.model.copyWith(
+      sentryOrganizationId: event.organizationId,
+    )));
+  }
 
-    final getOrders = await getSearchOrdersUseCase.setSearchOrder(
-      search: event.search,
+  void _onUpdateSentryProjectId(
+    UpdateSentryProjectIdEvent event,
+    Emitter<AddState> emit,
+  ) {
+    emit(
+      LoadedChangeSentryProjectId(
+        state.model.copyWith(
+          sentryProjectId: event.projectId,
+        ),
+      ),
     );
+  }
 
-    getOrders.fold((l) {
-      emit(
-        ErrorGetSearchOrderState(
-          model: state.model,
-          message: l.errorMessage,
+  void _onUpdateSentryToken(
+    UpdateSentryTokenEvent event,
+    Emitter<AddState> emit,
+  ) {
+    emit(
+      LoadedChangeSentryToken(
+        state.model.copyWith(
+          sentryToken: event.token,
         ),
-      );
-    }, (r) {
-      emit(
-        LoadedGetSearchOrderState(
-          state.model.copyWith(
-              // listArchetype: r,
-              ),
-        ),
-      );
-    });
+      ),
+    );
   }
 }
