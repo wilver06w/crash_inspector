@@ -1,21 +1,21 @@
+import 'package:crash_inspector/src/features/home/data/data_sources/remote/sentry_impl_api.dart';
+import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
+import 'package:crash_inspector/src/features/home/domain/repositories/abstract_sentry_config_repository.dart';
 import 'package:dartz/dartz.dart';
-import 'package:crash_inspector/src/features/detail/data/data_sources/remote/orders_impl_api.dart';
-import 'package:crash_inspector/src/features/detail/data/models/archetype.dart';
-import 'package:crash_inspector/src/features/detail/data/models/get_orders.dart';
-import 'package:crash_inspector/src/features/detail/domain/repositories/abstract_orders_repository.dart';
+
 import 'package:crash_inspector/src/shared/http/exceptions.dart';
 import 'package:crash_inspector/src/shared/http/failures.dart';
 
-class OrdersRepositoryImpl extends AbstractOrdersRepository {
-  OrdersRepositoryImpl({
+class SentryRepositoryImpl extends AbstractSentryConfigRepository {
+  SentryRepositoryImpl({
     required this.apiRemote,
   });
-  final OrdersImplApiRemote apiRemote;
+  final SentryImplApiRemote apiRemote;
 
   @override
-  Future<Either<Failure, List<Archetype>>> getOrders() async {
+  Future<Either<Failure, List<SentryConfigModel>>> getSentryConfigs() async {
     try {
-      final result = await apiRemote.getOrders();
+      final result = await apiRemote.getSentryConfigs();
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));
@@ -25,12 +25,12 @@ class OrdersRepositoryImpl extends AbstractOrdersRepository {
   }
 
   @override
-  Future<Either<Failure, GetOrders>> setSearchOrder(
-    String search,
+  Future<Either<Failure, SentryConfigModel>> removeSentryConfig(
+    int index,
   ) async {
     try {
-      final result = await apiRemote.setSearchOrder(
-        search,
+      final result = await apiRemote.removeSentryConfig(
+        index,
       );
       return Right(result);
     } on ServerException catch (e) {

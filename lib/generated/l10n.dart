@@ -214,6 +214,46 @@ class S {
       args: [],
     );
   }
+
+  /// `No hay configuraciones de Sentry`
+  String get noSentryConfigs {
+    return Intl.message(
+      'No hay configuraciones de Sentry',
+      name: 'noSentryConfigs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error al obtener las configuraciones de Sentry`
+  String get errorGettingSentryConfigs {
+    return Intl.message(
+      'Error al obtener las configuraciones de Sentry',
+      name: 'errorGettingSentryConfigs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Índice de configuración inválido`
+  String get invalidSentryConfigIndex {
+    return Intl.message(
+      'Índice de configuración inválido',
+      name: 'invalidSentryConfigIndex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Configuración de Sentry eliminada`
+  String get sentryConfigRemoved {
+    return Intl.message(
+      'Configuración de Sentry eliminada',
+      name: 'sentryConfigRemoved',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

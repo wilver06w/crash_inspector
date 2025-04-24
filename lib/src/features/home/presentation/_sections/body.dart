@@ -17,8 +17,15 @@ class Body extends StatelessWidget {
               S.current.crashInspector,
             ),
             IconButton(
-              onPressed: () {
-                VakaRoute.navAdd();
+              onPressed: () async {
+                final result = await VakaRoute.navAdd() ?? false;
+                if (result) {
+                  if (context.mounted) {
+                    context.read<BlocOrders>().add(
+                          const GetSentryConfigsEvent(),
+                        );
+                  }
+                }
               },
               icon: const Icon(
                 Icons.add_circle_outline_outlined,
@@ -28,39 +35,52 @@ class Body extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: BlocBuilder<BlocOrders, OrdersState>(
-                builder: (context, state) {
-                  final listArchetype = state.model.listArchetype ?? [];
+        child: BlocBuilder<BlocOrders, OrdersState>(
+          builder: (context, state) {
+            final sentryConfigs = state.model.sentryConfigs;
 
-                  return ListView.builder(
-                    itemCount: listArchetype.length,
-                    itemBuilder: (context, index) {
-                      final item = listArchetype[index];
-                      return MyCard(
-                        data: item,
-                        onTapDelete: () {},
-                        onTap: () async {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                S.current.detailArchetype(
-                                  item.archetypeName,
-                                ),
-                              ),
-                              backgroundColor: Colors.red,
+            return Column(
+              children: [
+                if (sentryConfigs.isNotEmpty)
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: sentryConfigs.length,
+                      itemBuilder: (context, index) {
+                        final config = sentryConfigs[index];
+                        return Card(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 8.0,
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              '${S.current.organizationId}: ${UtilGlobals.maskString(config.organizationId)}',
                             ),
-                          );
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
+                            subtitle: Text(
+                              '${S.current.projectId}: ${UtilGlobals.maskString(config.projectId)}',
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.delete_outline),
+                              onPressed: () {
+                                context.read<BlocOrders>().add(
+                                      RemoveSentryConfigEvent(index: index),
+                                    );
+                              },
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                else
+                  Expanded(
+                    child: Center(
+                      child: Text(S.current.noSentryConfigs),
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );

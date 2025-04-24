@@ -1,81 +1,88 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:crash_inspector/src/features/detail/data/models/archetype.dart';
-import 'package:crash_inspector/src/features/detail/domain/usecases/get_order_usecase.dart';
-import 'package:crash_inspector/src/features/detail/domain/usecases/get_search_order_usecase.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
+import 'package:crash_inspector/src/features/home/domain/usecases/get_sentry_configs_usecase.dart';
+import 'package:crash_inspector/src/features/home/domain/usecases/remove_sentry_config_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
 
 class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
   BlocOrders({
-    required this.getOrdersUseCase,
-    required this.getSearchOrdersUseCase,
+    required this.getSentryConfigsUseCase,
+    required this.removeSentryConfigUseCase,
   }) : super(const InitialState(Model())) {
-    on<GetOrderListEvent>(_onGetOrderListEvent);
-    on<SearchOrdersEvent>(_onSearchOrdersEvent);
+    on<GetSentryConfigsEvent>(_onGetSentryConfigs);
+    on<RemoveSentryConfigEvent>(_onRemoveSentryConfig);
   }
 
-  final GetOrdersUseCase getOrdersUseCase;
-  final GetSearchOrdersUseCase getSearchOrdersUseCase;
+  final GetSentryConfigsUseCase getSentryConfigsUseCase;
+  final RemoveSentryConfigUseCase removeSentryConfigUseCase;
 
-  Future<void> _onGetOrderListEvent(
-    GetOrderListEvent event,
+  Future<void> _onGetSentryConfigs(
+    GetSentryConfigsEvent event,
     Emitter<OrdersState> emit,
   ) async {
     emit(
-      LoadingGetOrderState(
+      LoadingGetSentryConfigsState(
         state.model,
       ),
     );
 
-    final getOrders = await getOrdersUseCase.getOrders();
+    final getSentryConfigs = await getSentryConfigsUseCase.getSentryConfigs();
 
-    getOrders.fold((l) {
-      emit(
-        ErrorGetOrderState(
-          model: state.model,
-          message: l.errorMessage,
-        ),
-      );
-    }, (r) {
-      emit(
-        LoadedGetOrderState(
-          state.model.copyWith(
-            listArchetype: r,
+    getSentryConfigs.fold(
+      (failure) {
+        emit(
+          ErrorGetSentryConfigsState(
+            model: state.model,
+            message: failure.errorMessage,
           ),
-        ),
-      );
-    });
+        );
+      },
+      (configs) {
+        emit(
+          LoadedGetSentryConfigsState(
+            state.model.copyWith(
+              sentryConfigs: configs,
+            ),
+          ),
+        );
+      },
+    );
   }
 
-  Future<void> _onSearchOrdersEvent(
-    SearchOrdersEvent event,
+  Future<void> _onRemoveSentryConfig(
+    RemoveSentryConfigEvent event,
     Emitter<OrdersState> emit,
   ) async {
-    emit(LoadingGetSearchOrderState(state.model));
-
-    final getOrders = await getSearchOrdersUseCase.setSearchOrder(
-      search: event.search,
+    emit(
+      LoadingRemoveSentryConfigState(
+        state.model,
+      ),
     );
+    final removeConfig = await removeSentryConfigUseCase.call(event.index);
 
-    getOrders.fold((l) {
-      emit(
-        ErrorGetSearchOrderState(
-          model: state.model,
-          message: l.errorMessage,
-        ),
-      );
-    }, (r) {
-      emit(
-        LoadedGetSearchOrderState(
-          state.model.copyWith(
-              // listArchetype: r,
-              ),
-        ),
-      );
-    });
+    removeConfig.fold(
+      (failure) {
+        emit(
+          ErrorRemoveSentryConfigState(
+            model: state.model,
+            message: failure.errorMessage,
+          ),
+        );
+      },
+      (configs) {
+        emit(
+          LoadedRemoveSentryConfigState(
+            model: state.model,
+            sentryConfigModel: configs,
+          ),
+        );
+      },
+    );
   }
 }

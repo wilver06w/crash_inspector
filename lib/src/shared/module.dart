@@ -1,3 +1,4 @@
+import 'package:crash_inspector/src/features/home/inject.dart';
 import 'package:crash_inspector/src/features/home/presentation/page.dart'
     as home;
 import 'package:crash_inspector/src/shared/http/http_client.dart';
@@ -8,6 +9,8 @@ class GlobalModule extends Module {
   @override
   void binds(Injector i) {
     i.addSingleton<Preferences>(Preferences.new);
+
+    InjectHome.binds(i);
   }
 
   @override

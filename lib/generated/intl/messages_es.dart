@@ -40,7 +40,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "clientValue": m0,
     "crashInspector": MessageLookupByLibrary.simpleMessage("Crash Inspector"),
     "detailArchetype": m1,
+    "errorGettingSentryConfigs": MessageLookupByLibrary.simpleMessage(
+      "Error al obtener las configuraciones de Sentry",
+    ),
+    "invalidSentryConfigIndex": MessageLookupByLibrary.simpleMessage(
+      "Índice de configuración inválido",
+    ),
     "noConection": MessageLookupByLibrary.simpleMessage("No conexion"),
+    "noSentryConfigs": MessageLookupByLibrary.simpleMessage(
+      "No hay configuraciones de Sentry",
+    ),
     "ofOf": MessageLookupByLibrary.simpleMessage("de"),
     "orderNumber": m2,
     "organizationId": MessageLookupByLibrary.simpleMessage("Organization ID"),
@@ -57,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectCrashSource": MessageLookupByLibrary.simpleMessage(
       "Selecciona la fuente de crash",
+    ),
+    "sentryConfigRemoved": MessageLookupByLibrary.simpleMessage(
+      "Configuración de Sentry eliminada",
     ),
     "serviceNotAvailable": MessageLookupByLibrary.simpleMessage(
       "Servicio no disponible",

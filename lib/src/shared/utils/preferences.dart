@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:crash_inspector/src/shared/models/sentry_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class Preferences {
   factory Preferences() => _singleton;
 
@@ -25,25 +24,41 @@ class Preferences {
   int get idUser => _prefs?.getInt('idUser') ?? 0;
   set idUser(int value) => _prefs?.setInt('idUser', value);
 
-  SentryConfig? get sentryConfig {
-    final value = _prefs?.getString('sentryConfig');
+  List<SentryConfig> get sentryConfigs {
+    final value = _prefs?.getString('sentryConfigs');
 
     if (value != null) {
-      final configData = json.decode(value);
-      return SentryConfig.fromJson(configData as Map<String, dynamic>);
+      final List<dynamic> configsData = json.decode(value);
+      return configsData
+          .map((data) => SentryConfig.fromJson(data as Map<String, dynamic>))
+          .toList();
     }
 
-    return null;
+    return [];
   }
 
-  set sentryConfig(SentryConfig? value) {
-    if (value == null) {
-      _prefs?.remove('sentryConfig');
-      return;
-    }
+  void addSentryConfig(SentryConfig config) {
+    final currentConfigs = sentryConfigs;
+    currentConfigs.add(config);
+    final configsJson = json.encode(
+      currentConfigs.map((config) => config.toJson()).toList(),
+    );
+    _prefs?.setString('sentryConfigs', configsJson);
+  }
 
-    final configJson = json.encode(value.toJson());
-    _prefs?.setString('sentryConfig', configJson);
+  void removeSentryConfig(int index) {
+    final currentConfigs = sentryConfigs;
+    if (index >= 0 && index < currentConfigs.length) {
+      currentConfigs.removeAt(index);
+      final configsJson = json.encode(
+        currentConfigs.map((config) => config.toJson()).toList(),
+      );
+      _prefs?.setString('sentryConfigs', configsJson);
+    }
+  }
+
+  void clearSentryConfigs() {
+    _prefs?.remove('sentryConfigs');
   }
 
   Future<void> clear() async {

@@ -14,7 +14,7 @@ class VakaRoute {
     );
   }
 
-  static Future<Object?> navAdd() {
+  static Future<bool?> navAdd() {
     return Modular.to.pushNamed(
       '/add',
     );

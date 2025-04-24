@@ -203,15 +203,18 @@ class SaveButton extends StatelessWidget {
                       token: state.model.sentryToken,
                     );
 
-                    prefs.sentryConfig = config;
+                    prefs.addSentryConfig(config);
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
                           S.current.savingConfiguration,
                         ),
+                        backgroundColor: Colors.green,
                       ),
                     );
+
+                    Modular.to.pop(true);
                   }
                 : null,
             style: ElevatedButton.styleFrom(

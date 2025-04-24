@@ -17,5 +17,9 @@
   "projectId": "Project ID",
   "token": "Token",
   "saveConfiguration": "Guardar configuración",
-  "savingConfiguration": "Guardando configuración"
+  "savingConfiguration": "Guardando configuración",
+  "noSentryConfigs": "No hay configuraciones de Sentry",
+  "errorGettingSentryConfigs": "Error al obtener las configuraciones de Sentry",
+  "invalidSentryConfigIndex": "Índice de configuración inválido",
+  "sentryConfigRemoved": "Configuración de Sentry eliminada"
 }

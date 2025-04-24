@@ -4,19 +4,16 @@ abstract class OrdersEvent extends Equatable {
   const OrdersEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class GetOrderListEvent extends OrdersEvent {
-  const GetOrderListEvent({
-    this.page = 1,
-  });
-  final int page;
+class GetSentryConfigsEvent extends OrdersEvent {
+  const GetSentryConfigsEvent();
 }
 
-class SearchOrdersEvent extends OrdersEvent {
-  const SearchOrdersEvent({
-    this.search = '',
+class RemoveSentryConfigEvent extends OrdersEvent {
+  const RemoveSentryConfigEvent({
+    required this.index,
   });
-  final String search;
+  final int index;
 }

@@ -12,57 +12,59 @@ class InitialState extends OrdersState {
   const InitialState(super.model);
 }
 
-class ErrorGetOrderState extends OrdersState {
-  const ErrorGetOrderState({
+class LoadingGetSentryConfigsState extends OrdersState {
+  const LoadingGetSentryConfigsState(super.model);
+}
+
+class LoadedGetSentryConfigsState extends OrdersState {
+  const LoadedGetSentryConfigsState(super.model);
+}
+
+class ErrorGetSentryConfigsState extends OrdersState {
+  const ErrorGetSentryConfigsState({
     required Model model,
     required this.message,
   }) : super(model);
   final String message;
 }
 
-class LoadedGetOrderState extends OrdersState {
-  const LoadedGetOrderState(super.model);
+class LoadingRemoveSentryConfigState extends OrdersState {
+  const LoadingRemoveSentryConfigState(super.model);
 }
 
-class LoadingGetSearchOrderState extends OrdersState {
-  const LoadingGetSearchOrderState(super.model);
+class LoadedRemoveSentryConfigState extends OrdersState {
+  const LoadedRemoveSentryConfigState({
+    required Model model,
+    required this.sentryConfigModel,
+  }) : super(model);
+  final SentryConfigModel sentryConfigModel;
 }
 
-class ErrorGetSearchOrderState extends OrdersState {
-  const ErrorGetSearchOrderState({
+class ErrorRemoveSentryConfigState extends OrdersState {
+  const ErrorRemoveSentryConfigState({
     required Model model,
     required this.message,
   }) : super(model);
   final String message;
-}
-
-class LoadedGetSearchOrderState extends OrdersState {
-  const LoadedGetSearchOrderState(super.model);
-}
-
-class LoadingGetOrderState extends OrdersState {
-  const LoadingGetOrderState(super.model);
 }
 
 class Model extends Equatable {
   const Model({
-    this.listArchetype,
+    this.sentryConfigs = const [],
   });
 
-  final List<Archetype>? listArchetype;
+  final List<SentryConfigModel> sentryConfigs;
 
   Model copyWith({
-    List<Archetype>? listArchetype,
+    List<SentryConfigModel>? sentryConfigs,
   }) {
     return Model(
-      listArchetype: listArchetype ?? this.listArchetype,
+      sentryConfigs: sentryConfigs ?? this.sentryConfigs,
     );
   }
 
   @override
-  List<Object?> get props {
-    return [
-      listArchetype,
-    ];
-  }
+  List<Object?> get props => [
+        sentryConfigs,
+      ];
 }
