@@ -61,6 +61,24 @@ class Preferences {
     _prefs?.remove('sentryConfigs');
   }
 
+  int? get selectedSentryConfigIndex =>
+      _prefs?.getInt('selectedSentryConfigIndex');
+  set selectedSentryConfigIndex(int? value) {
+    if (value == null) {
+      _prefs?.remove('selectedSentryConfigIndex');
+    } else {
+      _prefs?.setInt('selectedSentryConfigIndex', value);
+    }
+  }
+
+  SentryConfig? get selectedSentryConfig {
+    final index = selectedSentryConfigIndex;
+    if (index != null && index >= 0 && index < sentryConfigs.length) {
+      return sentryConfigs[index];
+    }
+    return null;
+  }
+
   Future<void> clear() async {
     await _prefs?.clear();
   }

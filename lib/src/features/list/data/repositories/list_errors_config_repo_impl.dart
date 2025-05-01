@@ -1,12 +1,12 @@
 import 'package:crash_inspector/src/features/home/data/data_sources/remote/sentry_impl_api.dart';
 import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/features/home/domain/repositories/abstract_sentry_config_repository.dart';
+import 'package:crash_inspector/src/features/list/domain/repositories/abstract_list_errors_config_repository.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:crash_inspector/src/shared/http/failures.dart';
 
-class SentryRepositoryImpl extends AbstractSentryConfigRepository {
-  SentryRepositoryImpl({
+class ListErrorsRepositoryImpl extends AbstractListErrorsRepository {
+  ListErrorsRepositoryImpl({
     required this.apiRemote,
   });
   final SentryImplApiRemote apiRemote;

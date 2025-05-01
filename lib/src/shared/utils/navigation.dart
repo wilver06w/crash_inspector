@@ -1,6 +1,18 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 class VakaRoute {
+  static Future<bool?> navAdd() {
+    return Modular.to.pushNamed(
+      '/add',
+    );
+  }
+
+  static Future<bool?> navListErrors() {
+    return Modular.to.pushNamed(
+      '/list_errors',
+    );
+  }
+
   static Future<Object?> navCrypto(
       // {
       // DetailParams? detailParams,
@@ -11,12 +23,6 @@ class VakaRoute {
       // arguments: {
       //   'params': detailParams,
       // },
-    );
-  }
-
-  static Future<bool?> navAdd() {
-    return Modular.to.pushNamed(
-      '/add',
     );
   }
 

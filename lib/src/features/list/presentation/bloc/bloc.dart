@@ -1,30 +1,30 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
+import 'package:crash_inspector/src/features/list/domain/usecases/remove_list_errors_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/get_sentry_configs_usecase.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/remove_sentry_config_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
 
-class BlocHome extends Bloc<HomeEvent, HomeState> {
-  BlocHome({
-    required this.getSentryConfigsUseCase,
-    required this.removeSentryConfigUseCase,
+class BlocList extends Bloc<ListEvent, ListState> {
+  BlocList({
+    required this.getListErrorsUseCase,
+    required this.removeListErrorsUseCase,
   }) : super(const InitialState(Model())) {
     on<GetSentryConfigsEvent>(_onGetSentryConfigs);
     on<RemoveSentryConfigEvent>(_onRemoveSentryConfig);
   }
 
-  final GetSentryConfigsUseCase getSentryConfigsUseCase;
-  final RemoveSentryConfigUseCase removeSentryConfigUseCase;
+  final GetListErrorsUseCase getListErrorsUseCase;
+  final RemoveListErrorsUseCase removeListErrorsUseCase;
 
   Future<void> _onGetSentryConfigs(
     GetSentryConfigsEvent event,
-    Emitter<HomeState> emit,
+    Emitter<ListState> emit,
   ) async {
     emit(
       LoadingGetSentryConfigsState(
@@ -32,7 +32,7 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
       ),
     );
 
-    final getSentryConfigs = await getSentryConfigsUseCase.getSentryConfigs();
+    final getSentryConfigs = await getListErrorsUseCase.getListErrors();
 
     getSentryConfigs.fold(
       (failure) {
@@ -57,14 +57,14 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onRemoveSentryConfig(
     RemoveSentryConfigEvent event,
-    Emitter<HomeState> emit,
+    Emitter<ListState> emit,
   ) async {
     emit(
       LoadingRemoveSentryConfigState(
         state.model,
       ),
     );
-    final removeConfig = await removeSentryConfigUseCase.call(event.index);
+    final removeConfig = await removeListErrorsUseCase.call(event.index);
 
     removeConfig.fold(
       (failure) {

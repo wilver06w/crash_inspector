@@ -1,7 +1,8 @@
 import 'package:crash_inspector/generated/l10n.dart';
 import 'package:crash_inspector/src/features/home/data/data_sources/remote/abstract_sentry_api_remote.dart';
 import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/shared/http/exceptions.dart';
+import 'package:crash_inspector/src/shared/http/failures.dart';
+import 'package:crash_inspector/src/shared/http/http_client.dart';
 import 'package:crash_inspector/src/shared/utils/preferences.dart';
 
 class SentryImplApiRemote extends AbstractSentryApiRemote {
@@ -10,7 +11,7 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
   });
 
   final Preferences preferences;
-  
+
   @override
   Future<List<SentryConfigModel>> getSentryConfigs() async {
     try {
@@ -18,11 +19,10 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
       return configs
           .map((config) => SentryConfigModel.fromEntity(config))
           .toList();
-    } catch (e) {
-      throw ServerException(
-        S.current.errorGettingSentryConfigs,
-        500,
-      );
+    } on DioException catch (error) {
+      throw DioFailure.decode(error);
+    } on Exception catch (error) {
+      throw ExceptionFailure.decode(error);
     }
   }
 
@@ -35,15 +35,15 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
         preferences.removeSentryConfig(index);
         return SentryConfigModel.fromEntity(configToRemove);
       }
-      throw ServerException(
-        S.current.invalidSentryConfigIndex,
-        400,
+      throw ExceptionFailure.decode(
+        Exception(
+          S.current.invalidSentryConfigIndex,
+        ),
       );
-    } catch (e) {
-      throw ServerException(
-        S.current.errorGettingSentryConfigs,
-        500,
-      );
+    } on DioException catch (error) {
+      throw DioFailure.decode(error);
+    } on Exception catch (error) {
+      throw ExceptionFailure.decode(error);
     }
   }
 }

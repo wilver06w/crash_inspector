@@ -1,4 +1,4 @@
-part of 'package:crash_inspector/src/features/home/presentation/page.dart';
+part of 'package:crash_inspector/src/features/list/presentation/page.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -15,14 +15,14 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              S.current.crashInspector,
+              'ID: ${prefs.selectedSentryConfig?.organizationId}',
             ),
             IconButton(
               onPressed: () async {
                 final result = await VakaRoute.navAdd() ?? false;
                 if (result) {
                   if (context.mounted) {
-                    context.read<BlocHome>().add(
+                    context.read<BlocList>().add(
                           const GetSentryConfigsEvent(),
                         );
                   }
@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: BlocBuilder<BlocHome, HomeState>(
+        child: BlocBuilder<BlocList, ListState>(
           builder: (context, state) {
             final sentryConfigs = state.model.sentryConfigs;
 
@@ -54,17 +54,6 @@ class Body extends StatelessWidget {
                             vertical: 8.0,
                           ),
                           child: ListTile(
-                            onTap: () {
-                              prefs.selectedSentryConfigIndex = index;
-                              final value = prefs.selectedSentryConfig;
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(value?.organizationId ?? ''),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                              VakaRoute.navListErrors();
-                            },
                             title: Text(
                               '${S.current.organizationId}: ${UtilGlobals.maskString(config.organizationId)}',
                             ),
@@ -74,7 +63,7 @@ class Body extends StatelessWidget {
                             trailing: IconButton(
                               icon: const Icon(Icons.delete_outline),
                               onPressed: () {
-                                context.read<BlocHome>().add(
+                                context.read<BlocList>().add(
                                       RemoveSentryConfigEvent(index: index),
                                     );
                               },

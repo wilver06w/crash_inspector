@@ -1,7 +1,9 @@
 import 'package:crash_inspector/generated/l10n.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/get_sentry_configs_usecase.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/remove_sentry_config_usecase.dart';
-import 'package:crash_inspector/src/features/home/presentation/bloc/bloc.dart';
+import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
+
+import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
+import 'package:crash_inspector/src/features/list/domain/usecases/remove_list_errors_usecase.dart';
+import 'package:crash_inspector/src/features/list/presentation/bloc/bloc.dart';
 import 'package:crash_inspector/src/shared/http/http_client.dart'
     hide ModularWatchExtension;
 import 'package:crash_inspector/src/shared/utils/loading.dart';
@@ -13,22 +15,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart'
     hide ModularWatchExtension;
 
-part 'package:crash_inspector/src/features/home/presentation/_sections/body.dart';
+part 'package:crash_inspector/src/features/list/presentation/_sections/body.dart';
 
 class Page extends StatelessWidget {
-  const Page({super.key});
+  const Page({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final getSentryConfigsUseCase = Modular.get<GetSentryConfigsUseCase>();
-    final removeSentryConfigUseCase = Modular.get<RemoveSentryConfigUseCase>();
+    final getListErrorsUseCase = Modular.get<GetListErrorsUseCase>();
+    final removeListErrorsUseCase = Modular.get<RemoveListErrorsUseCase>();
 
     return BlocProvider(
-      create: (context) => BlocHome(
-        getSentryConfigsUseCase: getSentryConfigsUseCase,
-        removeSentryConfigUseCase: removeSentryConfigUseCase,
+      create: (context) => BlocList(
+        getListErrorsUseCase: getListErrorsUseCase,
+        removeListErrorsUseCase: removeListErrorsUseCase,
       )..add(const GetSentryConfigsEvent()),
-      child: BlocListener<BlocHome, HomeState>(
+      child: BlocListener<BlocList, ListState>(
         listener: _listener,
         child: Body(),
       ),
@@ -36,7 +40,7 @@ class Page extends StatelessWidget {
   }
 }
 
-Future<void> _listener(BuildContext context, HomeState state) async {
+Future<void> _listener(BuildContext context, ListState state) async {
   if (state is LoadingGetSentryConfigsState ||
       state is LoadingRemoveSentryConfigState) {
     AppLoading.show(context);
@@ -68,6 +72,6 @@ Future<void> _listener(BuildContext context, HomeState state) async {
         backgroundColor: Colors.green,
       ),
     );
-    context.read<BlocHome>().add(const GetSentryConfigsEvent());
+    context.read<BlocList>().add(const GetSentryConfigsEvent());
   }
 }
