@@ -22,6 +22,12 @@ class SharedDio {
       ..options.followRedirects = false;
 
     _addHeaders();
+    _dioInstance.interceptors.add(
+      LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+      ),
+    );
   }
 
   late Dio _dioInstance;

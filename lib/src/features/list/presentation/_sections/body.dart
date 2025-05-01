@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
                 if (result) {
                   if (context.mounted) {
                     context.read<BlocList>().add(
-                          const GetSentryConfigsEvent(),
+                          const GetListErrorsEvent(),
                         );
                   }
                 }
@@ -35,54 +35,55 @@ class Body extends StatelessWidget {
           ],
         ),
       ),
-      body: SafeArea(
-        child: BlocBuilder<BlocList, ListState>(
-          builder: (context, state) {
-            final sentryConfigs = state.model.sentryConfigs;
+      body: const SafeArea(
+        child: SizedBox(),
+        // child: BlocBuilder<BlocList, ListState>(
+        //   builder: (context, state) {
+        //     final sentryConfigs = state.model.listErrorsModels;
 
-            return Column(
-              children: [
-                if (sentryConfigs.isNotEmpty)
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: sentryConfigs.length,
-                      itemBuilder: (context, index) {
-                        final config = sentryConfigs[index];
-                        return Card(
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 8.0,
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              '${S.current.organizationId}: ${UtilGlobals.maskString(config.organizationId)}',
-                            ),
-                            subtitle: Text(
-                              '${S.current.projectId}: ${UtilGlobals.maskString(config.projectId)}',
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.delete_outline),
-                              onPressed: () {
-                                context.read<BlocList>().add(
-                                      RemoveSentryConfigEvent(index: index),
-                                    );
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                else
-                  Expanded(
-                    child: Center(
-                      child: Text(S.current.noSentryConfigs),
-                    ),
-                  ),
-              ],
-            );
-          },
-        ),
+        //     return Column(
+        //       children: [
+        //         if (sentryConfigs.isNotEmpty)
+        //           Expanded(
+        //             child: ListView.builder(
+        //               itemCount: sentryConfigs.length,
+        //               itemBuilder: (context, index) {
+        //                 final config = sentryConfigs[index];
+        //                 return Card(
+        //                   margin: const EdgeInsets.symmetric(
+        //                     horizontal: 16.0,
+        //                     vertical: 8.0,
+        //                   ),
+        //                   child: ListTile(
+        //                     title: Text(
+        //                       '${S.current.organizationId}: ${UtilGlobals.maskString(config.organizationId)}',
+        //                     ),
+        //                     subtitle: Text(
+        //                       '${S.current.projectId}: ${UtilGlobals.maskString(config.projectId)}',
+        //                     ),
+        //                     trailing: IconButton(
+        //                       icon: const Icon(Icons.delete_outline),
+        //                       onPressed: () {
+        //                         context.read<BlocList>().add(
+        //                               RemoveSentryConfigEvent(index: index),
+        //                             );
+        //                       },
+        //                     ),
+        //                   ),
+        //                 );
+        //               },
+        //             ),
+        //           )
+        //         else
+        //           Expanded(
+        //             child: Center(
+        //               child: Text(S.current.noSentryConfigs),
+        //             ),
+        //           ),
+        //       ],
+        //     );
+        //   },
+        // ),
       ),
     );
   }

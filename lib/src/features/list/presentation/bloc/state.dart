@@ -28,43 +28,23 @@ class ErrorGetSentryConfigsState extends ListState {
   final String message;
 }
 
-class LoadingRemoveSentryConfigState extends ListState {
-  const LoadingRemoveSentryConfigState(super.model);
-}
-
-class LoadedRemoveSentryConfigState extends ListState {
-  const LoadedRemoveSentryConfigState({
-    required Model model,
-    required this.sentryConfigModel,
-  }) : super(model);
-  final SentryConfigModel sentryConfigModel;
-}
-
-class ErrorRemoveSentryConfigState extends ListState {
-  const ErrorRemoveSentryConfigState({
-    required Model model,
-    required this.message,
-  }) : super(model);
-  final String message;
-}
-
 class Model extends Equatable {
   const Model({
-    this.sentryConfigs = const [],
+    this.listErrorsModels,
   });
 
-  final List<SentryConfigModel> sentryConfigs;
+  final ListErrorsModels? listErrorsModels;
 
   Model copyWith({
-    List<SentryConfigModel>? sentryConfigs,
+    ListErrorsModels? listErrorsModels,
   }) {
     return Model(
-      sentryConfigs: sentryConfigs ?? this.sentryConfigs,
+      listErrorsModels: listErrorsModels ?? this.listErrorsModels,
     );
   }
 
   @override
   List<Object?> get props => [
-        sentryConfigs,
+        listErrorsModels,
       ];
 }

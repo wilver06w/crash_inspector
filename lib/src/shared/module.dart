@@ -11,6 +11,7 @@ import 'package:crash_inspector/src/shared/utils/preferences.dart';
 class GlobalModule extends Module {
   @override
   void binds(Injector i) {
+    i.addLazySingleton<HttpClient>(HttpClient.new);
     i.addSingleton<Preferences>(Preferences.new);
 
     InjectHome.binds(i);
