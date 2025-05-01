@@ -82,11 +82,11 @@ class ErrorDetail extends StatelessWidget {
               spacing: 10,
               runSpacing: 6,
               children: [
-                _flagChip('Public', error.isPublic),
-                _flagChip('Bookmarked', error.isBookmarked),
-                _flagChip('Subscribed', error.isSubscribed),
-                _flagChip('Seen', error.hasSeen),
-                _flagChip('Unhandled', error.isUnhandled),
+                FlagChip(title: 'Public', value: error.isPublic),
+                FlagChip(title: 'Bookmarked', value: error.isBookmarked),
+                FlagChip(title: 'Subscribed', value: error.isSubscribed),
+                FlagChip(title: 'Seen', value: error.hasSeen),
+                FlagChip(title: 'Unhandled', value: error.isUnhandled),
               ],
             ),
             const SizedBox(height: 16),
@@ -156,14 +156,26 @@ class InfoRow extends StatelessWidget {
   }
 }
 
-Widget _flagChip(String label, bool value) {
-  return Chip(
-    avatar: Icon(
-      value ? Icons.check_circle : Icons.cancel,
-      color: value ? Colors.green : Colors.red,
-      size: 16,
-    ),
-    label: Text(label),
-    backgroundColor: value ? Colors.green.shade50 : Colors.red.shade50,
-  );
+class FlagChip extends StatelessWidget {
+  const FlagChip({
+    super.key,
+    required this.title,
+    required this.value,
+  });
+
+  final String title;
+  final bool value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: Icon(
+        value ? Icons.check_circle : Icons.cancel,
+        color: value ? Colors.green : Colors.red,
+        size: 16,
+      ),
+      label: Text(title),
+      backgroundColor: value ? Colors.green.shade50 : Colors.red.shade50,
+    );
+  }
 }
