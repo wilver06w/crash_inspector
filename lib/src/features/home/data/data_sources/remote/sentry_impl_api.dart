@@ -10,9 +10,7 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
   });
 
   final Preferences preferences;
-
-  final archetypeUrl = '/v7/archetypes.php';
-
+  
   @override
   Future<List<SentryConfigModel>> getSentryConfigs() async {
     try {

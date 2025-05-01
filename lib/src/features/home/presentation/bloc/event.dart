@@ -1,17 +1,17 @@
 part of 'bloc.dart';
 
-abstract class OrdersEvent extends Equatable {
-  const OrdersEvent();
+abstract class HomeEvent extends Equatable {
+  const HomeEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-class GetSentryConfigsEvent extends OrdersEvent {
+class GetSentryConfigsEvent extends HomeEvent {
   const GetSentryConfigsEvent();
 }
 
-class RemoveSentryConfigEvent extends OrdersEvent {
+class RemoveSentryConfigEvent extends HomeEvent {
   const RemoveSentryConfigEvent({
     required this.index,
   });

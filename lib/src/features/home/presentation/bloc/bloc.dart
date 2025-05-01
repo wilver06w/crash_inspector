@@ -10,8 +10,8 @@ import 'package:crash_inspector/src/features/home/domain/usecases/remove_sentry_
 part 'event.dart';
 part 'state.dart';
 
-class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
-  BlocOrders({
+class BlocHome extends Bloc<HomeEvent, HomeState> {
+  BlocHome({
     required this.getSentryConfigsUseCase,
     required this.removeSentryConfigUseCase,
   }) : super(const InitialState(Model())) {
@@ -24,7 +24,7 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
 
   Future<void> _onGetSentryConfigs(
     GetSentryConfigsEvent event,
-    Emitter<OrdersState> emit,
+    Emitter<HomeState> emit,
   ) async {
     emit(
       LoadingGetSentryConfigsState(
@@ -57,7 +57,7 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
 
   Future<void> _onRemoveSentryConfig(
     RemoveSentryConfigEvent event,
-    Emitter<OrdersState> emit,
+    Emitter<HomeState> emit,
   ) async {
     emit(
       LoadingRemoveSentryConfigState(

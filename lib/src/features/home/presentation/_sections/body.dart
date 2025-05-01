@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
                 final result = await VakaRoute.navAdd() ?? false;
                 if (result) {
                   if (context.mounted) {
-                    context.read<BlocOrders>().add(
+                    context.read<BlocHome>().add(
                           const GetSentryConfigsEvent(),
                         );
                   }
@@ -35,7 +35,7 @@ class Body extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: BlocBuilder<BlocOrders, OrdersState>(
+        child: BlocBuilder<BlocHome, HomeState>(
           builder: (context, state) {
             final sentryConfigs = state.model.sentryConfigs;
 
@@ -62,7 +62,7 @@ class Body extends StatelessWidget {
                             trailing: IconButton(
                               icon: const Icon(Icons.delete_outline),
                               onPressed: () {
-                                context.read<BlocOrders>().add(
+                                context.read<BlocHome>().add(
                                       RemoveSentryConfigEvent(index: index),
                                     );
                               },

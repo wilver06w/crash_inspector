@@ -1,26 +1,26 @@
 part of 'bloc.dart';
 
-abstract class OrdersState extends Equatable {
-  const OrdersState(this.model);
+abstract class HomeState extends Equatable {
+  const HomeState(this.model);
   final Model model;
 
   @override
   List<Object?> get props => [model];
 }
 
-class InitialState extends OrdersState {
+class InitialState extends HomeState {
   const InitialState(super.model);
 }
 
-class LoadingGetSentryConfigsState extends OrdersState {
+class LoadingGetSentryConfigsState extends HomeState {
   const LoadingGetSentryConfigsState(super.model);
 }
 
-class LoadedGetSentryConfigsState extends OrdersState {
+class LoadedGetSentryConfigsState extends HomeState {
   const LoadedGetSentryConfigsState(super.model);
 }
 
-class ErrorGetSentryConfigsState extends OrdersState {
+class ErrorGetSentryConfigsState extends HomeState {
   const ErrorGetSentryConfigsState({
     required Model model,
     required this.message,
@@ -28,11 +28,11 @@ class ErrorGetSentryConfigsState extends OrdersState {
   final String message;
 }
 
-class LoadingRemoveSentryConfigState extends OrdersState {
+class LoadingRemoveSentryConfigState extends HomeState {
   const LoadingRemoveSentryConfigState(super.model);
 }
 
-class LoadedRemoveSentryConfigState extends OrdersState {
+class LoadedRemoveSentryConfigState extends HomeState {
   const LoadedRemoveSentryConfigState({
     required Model model,
     required this.sentryConfigModel,
@@ -40,7 +40,7 @@ class LoadedRemoveSentryConfigState extends OrdersState {
   final SentryConfigModel sentryConfigModel;
 }
 
-class ErrorRemoveSentryConfigState extends OrdersState {
+class ErrorRemoveSentryConfigState extends HomeState {
   const ErrorRemoveSentryConfigState({
     required Model model,
     required this.message,

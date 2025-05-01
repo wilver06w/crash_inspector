@@ -23,11 +23,11 @@ class Page extends StatelessWidget {
     final removeSentryConfigUseCase = Modular.get<RemoveSentryConfigUseCase>();
 
     return BlocProvider(
-      create: (context) => BlocOrders(
+      create: (context) => BlocHome(
         getSentryConfigsUseCase: getSentryConfigsUseCase,
         removeSentryConfigUseCase: removeSentryConfigUseCase,
       )..add(const GetSentryConfigsEvent()),
-      child: BlocListener<BlocOrders, OrdersState>(
+      child: BlocListener<BlocHome, HomeState>(
         listener: _listener,
         child: Body(),
       ),
@@ -35,7 +35,7 @@ class Page extends StatelessWidget {
   }
 }
 
-Future<void> _listener(BuildContext context, OrdersState state) async {
+Future<void> _listener(BuildContext context, HomeState state) async {
   if (state is LoadingGetSentryConfigsState ||
       state is LoadingRemoveSentryConfigState) {
     AppLoading.show(context);
@@ -67,6 +67,6 @@ Future<void> _listener(BuildContext context, OrdersState state) async {
         backgroundColor: Colors.green,
       ),
     );
-    context.read<BlocOrders>().add(const GetSentryConfigsEvent());
+    context.read<BlocHome>().add(const GetSentryConfigsEvent());
   }
 }
