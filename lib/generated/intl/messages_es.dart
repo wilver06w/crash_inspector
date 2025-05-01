@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "clientValue": m0,
     "crashInspector": MessageLookupByLibrary.simpleMessage("Crash Inspector"),
+    "culprit": MessageLookupByLibrary.simpleMessage("Culpable"),
     "detailArchetype": m1,
     "errorGettingSentryConfigs": MessageLookupByLibrary.simpleMessage(
       "Error al obtener las configuraciones de Sentry",
@@ -46,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidSentryConfigIndex": MessageLookupByLibrary.simpleMessage(
       "Índice de configuración inválido",
     ),
+    "lastSeen": MessageLookupByLibrary.simpleMessage("Último visto"),
+    "level": MessageLookupByLibrary.simpleMessage("Nivel"),
     "noConection": MessageLookupByLibrary.simpleMessage("No conexion"),
     "noSentryConfigs": MessageLookupByLibrary.simpleMessage(
       "No hay configuraciones de Sentry",
@@ -53,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "ofOf": MessageLookupByLibrary.simpleMessage("de"),
     "orderNumber": m2,
     "organizationId": MessageLookupByLibrary.simpleMessage("Organization ID"),
+    "platform": MessageLookupByLibrary.simpleMessage("Plataforma"),
+    "project": MessageLookupByLibrary.simpleMessage("Proyecto"),
     "projectId": MessageLookupByLibrary.simpleMessage("Project ID"),
     "saveConfiguration": MessageLookupByLibrary.simpleMessage(
       "Guardar configuración",
@@ -73,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "serviceNotAvailable": MessageLookupByLibrary.simpleMessage(
       "Servicio no disponible",
     ),
+    "status": MessageLookupByLibrary.simpleMessage("Estado"),
     "token": MessageLookupByLibrary.simpleMessage("Token"),
     "weHaveAErrorContactSuport": m3,
     "welcome": MessageLookupByLibrary.simpleMessage("Bievenido"),

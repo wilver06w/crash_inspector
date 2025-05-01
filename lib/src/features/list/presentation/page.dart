@@ -1,16 +1,21 @@
+import 'package:crash_inspector/generated/l10n.dart';
+import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
 import 'package:crash_inspector/src/features/list/presentation/bloc/bloc.dart';
 import 'package:crash_inspector/src/shared/http/http_client.dart'
     hide ModularWatchExtension;
+import 'package:intl/intl.dart';
 import 'package:crash_inspector/src/shared/utils/loading.dart';
 import 'package:crash_inspector/src/shared/utils/navigation.dart';
 import 'package:crash_inspector/src/shared/utils/preferences.dart';
+import 'package:crash_inspector/src/shared/utils/utils_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart'
     hide ModularWatchExtension;
 
 part 'package:crash_inspector/src/features/list/presentation/_sections/body.dart';
+part 'package:crash_inspector/src/features/list/presentation/_sections/error_item.dart';
 
 class Page extends StatelessWidget {
   const Page({

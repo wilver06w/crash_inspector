@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_errors_models.dart';
+part of 'errors_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ListErrorsModelsImpl _$$ListErrorsModelsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ListErrorsModelsImpl(
+_$ErrorsModelImpl _$$ErrorsModelImplFromJson(Map<String, dynamic> json) =>
+    _$ErrorsModelImpl(
       id: json['id'] as String,
       shareId: json['shareId'],
       shortId: json['shortId'] as String,
@@ -38,8 +37,7 @@ _$ListErrorsModelsImpl _$$ListErrorsModelsImplFromJson(
       lastSeen: DateTime.parse(json['lastSeen'] as String),
     );
 
-Map<String, dynamic> _$$ListErrorsModelsImplToJson(
-        _$ListErrorsModelsImpl instance) =>
+Map<String, dynamic> _$$ErrorsModelImplToJson(_$ErrorsModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'shareId': instance.shareId,
@@ -76,15 +74,15 @@ _$MetadataImpl _$$MetadataImplFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String?,
       filename: json['filename'] as String?,
       function: json['function'] as String?,
-      displayTitleWithTreeLabel: json['displayTitleWithTreeLabel'] as bool?,
-      inAppFrameMix: json['inAppFrameMix'] as String,
+      displayTitleWithTreeLabel: json['display_title_with_tree_label'] as bool?,
+      inAppFrameMix: json['in_app_frame_mix'] as String?,
       sdk: Sdk.fromJson(json['sdk'] as Map<String, dynamic>),
-      initialPriority: (json['initialPriority'] as num).toInt(),
+      initialPriority: (json['initial_priority'] as num).toInt(),
       title: json['title'],
-      seerSimilarity: json['seerSimilarity'] == null
+      seerSimilarity: json['seer_similarity'] == null
           ? null
           : SeerSimilarity.fromJson(
-              json['seerSimilarity'] as Map<String, dynamic>),
+              json['seer_similarity'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MetadataImplToJson(_$MetadataImpl instance) =>
@@ -93,35 +91,35 @@ Map<String, dynamic> _$$MetadataImplToJson(_$MetadataImpl instance) =>
       'type': instance.type,
       'filename': instance.filename,
       'function': instance.function,
-      'displayTitleWithTreeLabel': instance.displayTitleWithTreeLabel,
-      'inAppFrameMix': instance.inAppFrameMix,
+      'display_title_with_tree_label': instance.displayTitleWithTreeLabel,
+      'in_app_frame_mix': instance.inAppFrameMix,
       'sdk': instance.sdk,
-      'initialPriority': instance.initialPriority,
+      'initial_priority': instance.initialPriority,
       'title': instance.title,
-      'seerSimilarity': instance.seerSimilarity,
+      'seer_similarity': instance.seerSimilarity,
     };
 
 _$SdkImpl _$$SdkImplFromJson(Map<String, dynamic> json) => _$SdkImpl(
       name: json['name'] as String,
-      nameNormalized: json['nameNormalized'] as String,
+      nameNormalized: json['name_normalized'] as String,
     );
 
 Map<String, dynamic> _$$SdkImplToJson(_$SdkImpl instance) => <String, dynamic>{
       'name': instance.name,
-      'nameNormalized': instance.nameNormalized,
+      'name_normalized': instance.nameNormalized,
     };
 
 _$SeerSimilarityImpl _$$SeerSimilarityImplFromJson(Map<String, dynamic> json) =>
     _$SeerSimilarityImpl(
-      similarityModelVersion: json['similarityModelVersion'] as String,
-      requestHash: json['requestHash'] as String,
+      similarityModelVersion: json['similarity_model_version'] as String,
+      requestHash: json['request_hash'] as String,
     );
 
 Map<String, dynamic> _$$SeerSimilarityImplToJson(
         _$SeerSimilarityImpl instance) =>
     <String, dynamic>{
-      'similarityModelVersion': instance.similarityModelVersion,
-      'requestHash': instance.requestHash,
+      'similarity_model_version': instance.similarityModelVersion,
+      'request_hash': instance.requestHash,
     };
 
 _$ProjectImpl _$$ProjectImplFromJson(Map<String, dynamic> json) =>

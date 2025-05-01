@@ -60,7 +60,7 @@ class Body extends StatelessWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(value?.organizationId ?? ''),
-                                  backgroundColor: Colors.red,
+                                  backgroundColor: Colors.green,
                                 ),
                               );
                               VakaRoute.navListErrors();

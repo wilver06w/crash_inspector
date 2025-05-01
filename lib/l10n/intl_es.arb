@@ -21,5 +21,12 @@
   "noSentryConfigs": "No hay configuraciones de Sentry",
   "errorGettingSentryConfigs": "Error al obtener las configuraciones de Sentry",
   "invalidSentryConfigIndex": "Índice de configuración inválido",
-  "sentryConfigRemoved": "Configuración de Sentry eliminada"
+  "sentryConfigRemoved": "Configuración de Sentry eliminada",
+  "project": "Proyecto",
+  "platform": "Plataforma",
+  "lastSeen": "Último visto",
+  "culprit": "Culpable",
+  "level": "Nivel",
+  "status": "Estado"
+
 }

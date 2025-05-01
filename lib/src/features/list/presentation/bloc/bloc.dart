@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:crash_inspector/src/features/list/data/models/list_errors_models.dart';
+import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,11 +39,11 @@ class BlocList extends Bloc<ListEvent, ListState> {
           ),
         );
       },
-      (configs) {
+      (errorsModel) {
         emit(
           LoadedGetSentryConfigsState(
             state.model.copyWith(
-              listErrorsModels: configs,
+              listErrorsModel: errorsModel,
             ),
           ),
         );

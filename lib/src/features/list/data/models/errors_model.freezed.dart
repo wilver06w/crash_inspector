@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_errors_models.dart';
+part of 'errors_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ListErrorsModels _$ListErrorsModelsFromJson(Map<String, dynamic> json) {
-  return _ListErrorsModels.fromJson(json);
+ErrorsModel _$ErrorsModelFromJson(Map<String, dynamic> json) {
+  return _ErrorsModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ListErrorsModels {
+mixin _$ErrorsModel {
   String get id => throw _privateConstructorUsedError;
   dynamic get shareId => throw _privateConstructorUsedError;
   String get shortId => throw _privateConstructorUsedError;
@@ -48,21 +48,21 @@ mixin _$ListErrorsModels {
   DateTime get firstSeen => throw _privateConstructorUsedError;
   DateTime get lastSeen => throw _privateConstructorUsedError;
 
-  /// Serializes this ListErrorsModels to a JSON map.
+  /// Serializes this ErrorsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ListErrorsModelsCopyWith<ListErrorsModels> get copyWith =>
+  $ErrorsModelCopyWith<ErrorsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ListErrorsModelsCopyWith<$Res> {
-  factory $ListErrorsModelsCopyWith(
-          ListErrorsModels value, $Res Function(ListErrorsModels) then) =
-      _$ListErrorsModelsCopyWithImpl<$Res, ListErrorsModels>;
+abstract class $ErrorsModelCopyWith<$Res> {
+  factory $ErrorsModelCopyWith(
+          ErrorsModel value, $Res Function(ErrorsModel) then) =
+      _$ErrorsModelCopyWithImpl<$Res, ErrorsModel>;
   @useResult
   $Res call(
       {String id,
@@ -98,16 +98,16 @@ abstract class $ListErrorsModelsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ListErrorsModelsCopyWithImpl<$Res, $Val extends ListErrorsModels>
-    implements $ListErrorsModelsCopyWith<$Res> {
-  _$ListErrorsModelsCopyWithImpl(this._value, this._then);
+class _$ErrorsModelCopyWithImpl<$Res, $Val extends ErrorsModel>
+    implements $ErrorsModelCopyWith<$Res> {
+  _$ErrorsModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -252,7 +252,7 @@ class _$ListErrorsModelsCopyWithImpl<$Res, $Val extends ListErrorsModels>
     ) as $Val);
   }
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -262,7 +262,7 @@ class _$ListErrorsModelsCopyWithImpl<$Res, $Val extends ListErrorsModels>
     });
   }
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -274,11 +274,11 @@ class _$ListErrorsModelsCopyWithImpl<$Res, $Val extends ListErrorsModels>
 }
 
 /// @nodoc
-abstract class _$$ListErrorsModelsImplCopyWith<$Res>
-    implements $ListErrorsModelsCopyWith<$Res> {
-  factory _$$ListErrorsModelsImplCopyWith(_$ListErrorsModelsImpl value,
-          $Res Function(_$ListErrorsModelsImpl) then) =
-      __$$ListErrorsModelsImplCopyWithImpl<$Res>;
+abstract class _$$ErrorsModelImplCopyWith<$Res>
+    implements $ErrorsModelCopyWith<$Res> {
+  factory _$$ErrorsModelImplCopyWith(
+          _$ErrorsModelImpl value, $Res Function(_$ErrorsModelImpl) then) =
+      __$$ErrorsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -317,14 +317,14 @@ abstract class _$$ListErrorsModelsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ListErrorsModelsImplCopyWithImpl<$Res>
-    extends _$ListErrorsModelsCopyWithImpl<$Res, _$ListErrorsModelsImpl>
-    implements _$$ListErrorsModelsImplCopyWith<$Res> {
-  __$$ListErrorsModelsImplCopyWithImpl(_$ListErrorsModelsImpl _value,
-      $Res Function(_$ListErrorsModelsImpl) _then)
+class __$$ErrorsModelImplCopyWithImpl<$Res>
+    extends _$ErrorsModelCopyWithImpl<$Res, _$ErrorsModelImpl>
+    implements _$$ErrorsModelImplCopyWith<$Res> {
+  __$$ErrorsModelImplCopyWithImpl(
+      _$ErrorsModelImpl _value, $Res Function(_$ErrorsModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -357,7 +357,7 @@ class __$$ListErrorsModelsImplCopyWithImpl<$Res>
     Object? firstSeen = null,
     Object? lastSeen = null,
   }) {
-    return _then(_$ListErrorsModelsImpl(
+    return _then(_$ErrorsModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -472,8 +472,8 @@ class __$$ListErrorsModelsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ListErrorsModelsImpl implements _ListErrorsModels {
-  const _$ListErrorsModelsImpl(
+class _$ErrorsModelImpl implements _ErrorsModel {
+  const _$ErrorsModelImpl(
       {required this.id,
       required this.shareId,
       required this.shortId,
@@ -502,8 +502,8 @@ class _$ListErrorsModelsImpl implements _ListErrorsModels {
       required this.firstSeen,
       required this.lastSeen});
 
-  factory _$ListErrorsModelsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ListErrorsModelsImplFromJson(json);
+  factory _$ErrorsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorsModelImplFromJson(json);
 
   @override
   final String id;
@@ -562,14 +562,14 @@ class _$ListErrorsModelsImpl implements _ListErrorsModels {
 
   @override
   String toString() {
-    return 'ListErrorsModels(id: $id, shareId: $shareId, shortId: $shortId, title: $title, culprit: $culprit, permalink: $permalink, level: $level, status: $status, substatus: $substatus, isPublic: $isPublic, platform: $platform, project: $project, type: $type, metadata: $metadata, numComments: $numComments, assignedTo: $assignedTo, isBookmarked: $isBookmarked, isSubscribed: $isSubscribed, hasSeen: $hasSeen, issueType: $issueType, issueCategory: $issueCategory, priority: $priority, isUnhandled: $isUnhandled, count: $count, userCount: $userCount, firstSeen: $firstSeen, lastSeen: $lastSeen)';
+    return 'ErrorsModel(id: $id, shareId: $shareId, shortId: $shortId, title: $title, culprit: $culprit, permalink: $permalink, level: $level, status: $status, substatus: $substatus, isPublic: $isPublic, platform: $platform, project: $project, type: $type, metadata: $metadata, numComments: $numComments, assignedTo: $assignedTo, isBookmarked: $isBookmarked, isSubscribed: $isSubscribed, hasSeen: $hasSeen, issueType: $issueType, issueCategory: $issueCategory, priority: $priority, isUnhandled: $isUnhandled, count: $count, userCount: $userCount, firstSeen: $firstSeen, lastSeen: $lastSeen)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ListErrorsModelsImpl &&
+            other is _$ErrorsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other.shareId, shareId) &&
             (identical(other.shortId, shortId) || other.shortId == shortId) &&
@@ -648,25 +648,24 @@ class _$ListErrorsModelsImpl implements _ListErrorsModels {
         lastSeen
       ]);
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ListErrorsModelsImplCopyWith<_$ListErrorsModelsImpl> get copyWith =>
-      __$$ListErrorsModelsImplCopyWithImpl<_$ListErrorsModelsImpl>(
-          this, _$identity);
+  _$$ErrorsModelImplCopyWith<_$ErrorsModelImpl> get copyWith =>
+      __$$ErrorsModelImplCopyWithImpl<_$ErrorsModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ListErrorsModelsImplToJson(
+    return _$$ErrorsModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ListErrorsModels implements ListErrorsModels {
-  const factory _ListErrorsModels(
+abstract class _ErrorsModel implements ErrorsModel {
+  const factory _ErrorsModel(
       {required final String id,
       required final dynamic shareId,
       required final String shortId,
@@ -693,10 +692,10 @@ abstract class _ListErrorsModels implements ListErrorsModels {
       required final String count,
       required final int userCount,
       required final DateTime firstSeen,
-      required final DateTime lastSeen}) = _$ListErrorsModelsImpl;
+      required final DateTime lastSeen}) = _$ErrorsModelImpl;
 
-  factory _ListErrorsModels.fromJson(Map<String, dynamic> json) =
-      _$ListErrorsModelsImpl.fromJson;
+  factory _ErrorsModel.fromJson(Map<String, dynamic> json) =
+      _$ErrorsModelImpl.fromJson;
 
   @override
   String get id;
@@ -753,11 +752,11 @@ abstract class _ListErrorsModels implements ListErrorsModels {
   @override
   DateTime get lastSeen;
 
-  /// Create a copy of ListErrorsModels
+  /// Create a copy of ErrorsModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ListErrorsModelsImplCopyWith<_$ListErrorsModelsImpl> get copyWith =>
+  _$$ErrorsModelImplCopyWith<_$ErrorsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -771,11 +770,15 @@ mixin _$Metadata {
   String? get type => throw _privateConstructorUsedError;
   String? get filename => throw _privateConstructorUsedError;
   String? get function => throw _privateConstructorUsedError;
+  @JsonKey(name: 'display_title_with_tree_label')
   bool? get displayTitleWithTreeLabel => throw _privateConstructorUsedError;
-  String get inAppFrameMix => throw _privateConstructorUsedError;
+  @JsonKey(name: 'in_app_frame_mix')
+  String? get inAppFrameMix => throw _privateConstructorUsedError;
   Sdk get sdk => throw _privateConstructorUsedError;
+  @JsonKey(name: 'initial_priority')
   int get initialPriority => throw _privateConstructorUsedError;
   dynamic get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'seer_similarity')
   SeerSimilarity? get seerSimilarity => throw _privateConstructorUsedError;
 
   /// Serializes this Metadata to a JSON map.
@@ -798,12 +801,13 @@ abstract class $MetadataCopyWith<$Res> {
       String? type,
       String? filename,
       String? function,
+      @JsonKey(name: 'display_title_with_tree_label')
       bool? displayTitleWithTreeLabel,
-      String inAppFrameMix,
+      @JsonKey(name: 'in_app_frame_mix') String? inAppFrameMix,
       Sdk sdk,
-      int initialPriority,
+      @JsonKey(name: 'initial_priority') int initialPriority,
       dynamic title,
-      SeerSimilarity? seerSimilarity});
+      @JsonKey(name: 'seer_similarity') SeerSimilarity? seerSimilarity});
 
   $SdkCopyWith<$Res> get sdk;
   $SeerSimilarityCopyWith<$Res>? get seerSimilarity;
@@ -829,7 +833,7 @@ class _$MetadataCopyWithImpl<$Res, $Val extends Metadata>
     Object? filename = freezed,
     Object? function = freezed,
     Object? displayTitleWithTreeLabel = freezed,
-    Object? inAppFrameMix = null,
+    Object? inAppFrameMix = freezed,
     Object? sdk = null,
     Object? initialPriority = null,
     Object? title = freezed,
@@ -856,10 +860,10 @@ class _$MetadataCopyWithImpl<$Res, $Val extends Metadata>
           ? _value.displayTitleWithTreeLabel
           : displayTitleWithTreeLabel // ignore: cast_nullable_to_non_nullable
               as bool?,
-      inAppFrameMix: null == inAppFrameMix
+      inAppFrameMix: freezed == inAppFrameMix
           ? _value.inAppFrameMix
           : inAppFrameMix // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       sdk: null == sdk
           ? _value.sdk
           : sdk // ignore: cast_nullable_to_non_nullable
@@ -917,12 +921,13 @@ abstract class _$$MetadataImplCopyWith<$Res>
       String? type,
       String? filename,
       String? function,
+      @JsonKey(name: 'display_title_with_tree_label')
       bool? displayTitleWithTreeLabel,
-      String inAppFrameMix,
+      @JsonKey(name: 'in_app_frame_mix') String? inAppFrameMix,
       Sdk sdk,
-      int initialPriority,
+      @JsonKey(name: 'initial_priority') int initialPriority,
       dynamic title,
-      SeerSimilarity? seerSimilarity});
+      @JsonKey(name: 'seer_similarity') SeerSimilarity? seerSimilarity});
 
   @override
   $SdkCopyWith<$Res> get sdk;
@@ -948,7 +953,7 @@ class __$$MetadataImplCopyWithImpl<$Res>
     Object? filename = freezed,
     Object? function = freezed,
     Object? displayTitleWithTreeLabel = freezed,
-    Object? inAppFrameMix = null,
+    Object? inAppFrameMix = freezed,
     Object? sdk = null,
     Object? initialPriority = null,
     Object? title = freezed,
@@ -975,10 +980,10 @@ class __$$MetadataImplCopyWithImpl<$Res>
           ? _value.displayTitleWithTreeLabel
           : displayTitleWithTreeLabel // ignore: cast_nullable_to_non_nullable
               as bool?,
-      inAppFrameMix: null == inAppFrameMix
+      inAppFrameMix: freezed == inAppFrameMix
           ? _value.inAppFrameMix
           : inAppFrameMix // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       sdk: null == sdk
           ? _value.sdk
           : sdk // ignore: cast_nullable_to_non_nullable
@@ -1007,12 +1012,13 @@ class _$MetadataImpl implements _Metadata {
       this.type,
       this.filename,
       this.function,
+      @JsonKey(name: 'display_title_with_tree_label')
       this.displayTitleWithTreeLabel,
-      required this.inAppFrameMix,
+      @JsonKey(name: 'in_app_frame_mix') this.inAppFrameMix,
       required this.sdk,
-      required this.initialPriority,
+      @JsonKey(name: 'initial_priority') required this.initialPriority,
       this.title,
-      this.seerSimilarity});
+      @JsonKey(name: 'seer_similarity') this.seerSimilarity});
 
   factory _$MetadataImpl.fromJson(Map<String, dynamic> json) =>
       _$$MetadataImplFromJson(json);
@@ -1026,16 +1032,20 @@ class _$MetadataImpl implements _Metadata {
   @override
   final String? function;
   @override
+  @JsonKey(name: 'display_title_with_tree_label')
   final bool? displayTitleWithTreeLabel;
   @override
-  final String inAppFrameMix;
+  @JsonKey(name: 'in_app_frame_mix')
+  final String? inAppFrameMix;
   @override
   final Sdk sdk;
   @override
+  @JsonKey(name: 'initial_priority')
   final int initialPriority;
   @override
   final dynamic title;
   @override
+  @JsonKey(name: 'seer_similarity')
   final SeerSimilarity? seerSimilarity;
 
   @override
@@ -1104,11 +1114,13 @@ abstract class _Metadata implements Metadata {
       final String? type,
       final String? filename,
       final String? function,
+      @JsonKey(name: 'display_title_with_tree_label')
       final bool? displayTitleWithTreeLabel,
-      required final String inAppFrameMix,
+      @JsonKey(name: 'in_app_frame_mix') final String? inAppFrameMix,
       required final Sdk sdk,
-      required final int initialPriority,
+      @JsonKey(name: 'initial_priority') required final int initialPriority,
       final dynamic title,
+      @JsonKey(name: 'seer_similarity')
       final SeerSimilarity? seerSimilarity}) = _$MetadataImpl;
 
   factory _Metadata.fromJson(Map<String, dynamic> json) =
@@ -1123,16 +1135,20 @@ abstract class _Metadata implements Metadata {
   @override
   String? get function;
   @override
+  @JsonKey(name: 'display_title_with_tree_label')
   bool? get displayTitleWithTreeLabel;
   @override
-  String get inAppFrameMix;
+  @JsonKey(name: 'in_app_frame_mix')
+  String? get inAppFrameMix;
   @override
   Sdk get sdk;
   @override
+  @JsonKey(name: 'initial_priority')
   int get initialPriority;
   @override
   dynamic get title;
   @override
+  @JsonKey(name: 'seer_similarity')
   SeerSimilarity? get seerSimilarity;
 
   /// Create a copy of Metadata
@@ -1150,6 +1166,7 @@ Sdk _$SdkFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Sdk {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name_normalized')
   String get nameNormalized => throw _privateConstructorUsedError;
 
   /// Serializes this Sdk to a JSON map.
@@ -1166,7 +1183,8 @@ abstract class $SdkCopyWith<$Res> {
   factory $SdkCopyWith(Sdk value, $Res Function(Sdk) then) =
       _$SdkCopyWithImpl<$Res, Sdk>;
   @useResult
-  $Res call({String name, String nameNormalized});
+  $Res call(
+      {String name, @JsonKey(name: 'name_normalized') String nameNormalized});
 }
 
 /// @nodoc
@@ -1205,7 +1223,8 @@ abstract class _$$SdkImplCopyWith<$Res> implements $SdkCopyWith<$Res> {
       __$$SdkImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String nameNormalized});
+  $Res call(
+      {String name, @JsonKey(name: 'name_normalized') String nameNormalized});
 }
 
 /// @nodoc
@@ -1238,7 +1257,9 @@ class __$$SdkImplCopyWithImpl<$Res> extends _$SdkCopyWithImpl<$Res, _$SdkImpl>
 /// @nodoc
 @JsonSerializable()
 class _$SdkImpl implements _Sdk {
-  const _$SdkImpl({required this.name, required this.nameNormalized});
+  const _$SdkImpl(
+      {required this.name,
+      @JsonKey(name: 'name_normalized') required this.nameNormalized});
 
   factory _$SdkImpl.fromJson(Map<String, dynamic> json) =>
       _$$SdkImplFromJson(json);
@@ -1246,6 +1267,7 @@ class _$SdkImpl implements _Sdk {
   @override
   final String name;
   @override
+  @JsonKey(name: 'name_normalized')
   final String nameNormalized;
 
   @override
@@ -1286,6 +1308,7 @@ class _$SdkImpl implements _Sdk {
 abstract class _Sdk implements Sdk {
   const factory _Sdk(
       {required final String name,
+      @JsonKey(name: 'name_normalized')
       required final String nameNormalized}) = _$SdkImpl;
 
   factory _Sdk.fromJson(Map<String, dynamic> json) = _$SdkImpl.fromJson;
@@ -1293,6 +1316,7 @@ abstract class _Sdk implements Sdk {
   @override
   String get name;
   @override
+  @JsonKey(name: 'name_normalized')
   String get nameNormalized;
 
   /// Create a copy of Sdk
@@ -1309,7 +1333,9 @@ SeerSimilarity _$SeerSimilarityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SeerSimilarity {
+  @JsonKey(name: 'similarity_model_version')
   String get similarityModelVersion => throw _privateConstructorUsedError;
+  @JsonKey(name: 'request_hash')
   String get requestHash => throw _privateConstructorUsedError;
 
   /// Serializes this SeerSimilarity to a JSON map.
@@ -1328,7 +1354,9 @@ abstract class $SeerSimilarityCopyWith<$Res> {
           SeerSimilarity value, $Res Function(SeerSimilarity) then) =
       _$SeerSimilarityCopyWithImpl<$Res, SeerSimilarity>;
   @useResult
-  $Res call({String similarityModelVersion, String requestHash});
+  $Res call(
+      {@JsonKey(name: 'similarity_model_version') String similarityModelVersion,
+      @JsonKey(name: 'request_hash') String requestHash});
 }
 
 /// @nodoc
@@ -1370,7 +1398,9 @@ abstract class _$$SeerSimilarityImplCopyWith<$Res>
       __$$SeerSimilarityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String similarityModelVersion, String requestHash});
+  $Res call(
+      {@JsonKey(name: 'similarity_model_version') String similarityModelVersion,
+      @JsonKey(name: 'request_hash') String requestHash});
 }
 
 /// @nodoc
@@ -1406,14 +1436,18 @@ class __$$SeerSimilarityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SeerSimilarityImpl implements _SeerSimilarity {
   const _$SeerSimilarityImpl(
-      {required this.similarityModelVersion, required this.requestHash});
+      {@JsonKey(name: 'similarity_model_version')
+      required this.similarityModelVersion,
+      @JsonKey(name: 'request_hash') required this.requestHash});
 
   factory _$SeerSimilarityImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeerSimilarityImplFromJson(json);
 
   @override
+  @JsonKey(name: 'similarity_model_version')
   final String similarityModelVersion;
   @override
+  @JsonKey(name: 'request_hash')
   final String requestHash;
 
   @override
@@ -1456,15 +1490,19 @@ class _$SeerSimilarityImpl implements _SeerSimilarity {
 
 abstract class _SeerSimilarity implements SeerSimilarity {
   const factory _SeerSimilarity(
-      {required final String similarityModelVersion,
-      required final String requestHash}) = _$SeerSimilarityImpl;
+          {@JsonKey(name: 'similarity_model_version')
+          required final String similarityModelVersion,
+          @JsonKey(name: 'request_hash') required final String requestHash}) =
+      _$SeerSimilarityImpl;
 
   factory _SeerSimilarity.fromJson(Map<String, dynamic> json) =
       _$SeerSimilarityImpl.fromJson;
 
   @override
+  @JsonKey(name: 'similarity_model_version')
   String get similarityModelVersion;
   @override
+  @JsonKey(name: 'request_hash')
   String get requestHash;
 
   /// Create a copy of SeerSimilarity

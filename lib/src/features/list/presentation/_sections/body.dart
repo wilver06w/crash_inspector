@@ -17,73 +17,40 @@ class Body extends StatelessWidget {
             Text(
               'ID: ${prefs.selectedSentryConfig?.organizationId}',
             ),
-            IconButton(
-              onPressed: () async {
-                final result = await VakaRoute.navAdd() ?? false;
-                if (result) {
-                  if (context.mounted) {
-                    context.read<BlocList>().add(
-                          const GetListErrorsEvent(),
-                        );
-                  }
-                }
-              },
-              icon: const Icon(
-                Icons.add_circle_outline_outlined,
-              ),
-            ),
           ],
         ),
       ),
-      body: const SafeArea(
-        child: SizedBox(),
-        // child: BlocBuilder<BlocList, ListState>(
-        //   builder: (context, state) {
-        //     final sentryConfigs = state.model.listErrorsModels;
+      body: SafeArea(
+        child: BlocBuilder<BlocList, ListState>(
+          builder: (context, state) {
+            final listErrors = state.model.listErrorsModel;
 
-        //     return Column(
-        //       children: [
-        //         if (sentryConfigs.isNotEmpty)
-        //           Expanded(
-        //             child: ListView.builder(
-        //               itemCount: sentryConfigs.length,
-        //               itemBuilder: (context, index) {
-        //                 final config = sentryConfigs[index];
-        //                 return Card(
-        //                   margin: const EdgeInsets.symmetric(
-        //                     horizontal: 16.0,
-        //                     vertical: 8.0,
-        //                   ),
-        //                   child: ListTile(
-        //                     title: Text(
-        //                       '${S.current.organizationId}: ${UtilGlobals.maskString(config.organizationId)}',
-        //                     ),
-        //                     subtitle: Text(
-        //                       '${S.current.projectId}: ${UtilGlobals.maskString(config.projectId)}',
-        //                     ),
-        //                     trailing: IconButton(
-        //                       icon: const Icon(Icons.delete_outline),
-        //                       onPressed: () {
-        //                         context.read<BlocList>().add(
-        //                               RemoveSentryConfigEvent(index: index),
-        //                             );
-        //                       },
-        //                     ),
-        //                   ),
-        //                 );
-        //               },
-        //             ),
-        //           )
-        //         else
-        //           Expanded(
-        //             child: Center(
-        //               child: Text(S.current.noSentryConfigs),
-        //             ),
-        //           ),
-        //       ],
-        //     );
-        //   },
-        // ),
+            return Column(
+              children: [
+                if (listErrors != null && listErrors.isNotEmpty)
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: listErrors.length,
+                      itemBuilder: (context, index) {
+                        final config = listErrors[index];
+                        return ErrorItem(
+                          error: config,
+                        );
+                      },
+                    ),
+                  )
+                else
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        S.current.noSentryConfigs,
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

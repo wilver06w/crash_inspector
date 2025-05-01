@@ -30,21 +30,21 @@ class ErrorGetSentryConfigsState extends ListState {
 
 class Model extends Equatable {
   const Model({
-    this.listErrorsModels,
+    this.listErrorsModel,
   });
 
-  final ListErrorsModels? listErrorsModels;
+  final List<ErrorsModel>? listErrorsModel;
 
   Model copyWith({
-    ListErrorsModels? listErrorsModels,
+    List<ErrorsModel>? listErrorsModel,
   }) {
     return Model(
-      listErrorsModels: listErrorsModels ?? this.listErrorsModels,
+      listErrorsModel: listErrorsModel ?? this.listErrorsModel,
     );
   }
 
   @override
   List<Object?> get props => [
-        listErrorsModels,
+        listErrorsModel,
       ];
 }

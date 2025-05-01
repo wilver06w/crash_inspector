@@ -254,6 +254,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Proyecto`
+  String get project {
+    return Intl.message('Proyecto', name: 'project', desc: '', args: []);
+  }
+
+  /// `Plataforma`
+  String get platform {
+    return Intl.message('Plataforma', name: 'platform', desc: '', args: []);
+  }
+
+  /// `Último visto`
+  String get lastSeen {
+    return Intl.message('Último visto', name: 'lastSeen', desc: '', args: []);
+  }
+
+  /// `Culpable`
+  String get culprit {
+    return Intl.message('Culpable', name: 'culprit', desc: '', args: []);
+  }
+
+  /// `Nivel`
+  String get level {
+    return Intl.message('Nivel', name: 'level', desc: '', args: []);
+  }
+
+  /// `Estado`
+  String get status {
+    return Intl.message('Estado', name: 'status', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

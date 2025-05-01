@@ -1,5 +1,5 @@
-import 'package:crash_inspector/src/features/list/data/models/list_errors_models.dart';
+import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 
 abstract class AbstractListErrorApiRemote {
-  Future<ListErrorsModels> getListErrors();
+  Future<List<ErrorsModel>> getListErrors();
 }

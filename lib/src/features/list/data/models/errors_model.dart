@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'list_errors_models.freezed.dart';
-part 'list_errors_models.g.dart';
+part 'errors_model.freezed.dart';
+part 'errors_model.g.dart';
 
 @freezed
-class ListErrorsModels with _$ListErrorsModels {
-  const factory ListErrorsModels({
+class ErrorsModel with _$ErrorsModel {
+  const factory ErrorsModel({
     required String id,
     required dynamic shareId,
     required String shortId,
@@ -33,10 +33,10 @@ class ListErrorsModels with _$ListErrorsModels {
     required int userCount,
     required DateTime firstSeen,
     required DateTime lastSeen,
-  }) = _ListErrorsModels;
+  }) = _ErrorsModel;
 
-  factory ListErrorsModels.fromJson(Map<String, dynamic> json) =>
-      _$ListErrorsModelsFromJson(json);
+  factory ErrorsModel.fromJson(Map<String, dynamic> json) =>
+      _$ErrorsModelFromJson(json);
 }
 
 @freezed
@@ -46,24 +46,24 @@ class Metadata with _$Metadata {
     String? type,
     String? filename,
     String? function,
+    @JsonKey(name: 'display_title_with_tree_label')
     bool? displayTitleWithTreeLabel,
-    required String inAppFrameMix,
+    @JsonKey(name: 'in_app_frame_mix') String? inAppFrameMix,
     required Sdk sdk,
-    required int initialPriority,
+    @JsonKey(name: 'initial_priority') required int initialPriority,
     dynamic title,
-    SeerSimilarity? seerSimilarity,
+    @JsonKey(name: 'seer_similarity') SeerSimilarity? seerSimilarity,
   }) = _Metadata;
 
   factory Metadata.fromJson(Map<String, dynamic> json) =>
       _$MetadataFromJson(json);
 }
 
-
 @freezed
 class Sdk with _$Sdk {
   const factory Sdk({
     required String name,
-    required String nameNormalized,
+    @JsonKey(name: 'name_normalized') required String nameNormalized,
   }) = _Sdk;
 
   factory Sdk.fromJson(Map<String, dynamic> json) => _$SdkFromJson(json);
@@ -72,8 +72,9 @@ class Sdk with _$Sdk {
 @freezed
 class SeerSimilarity with _$SeerSimilarity {
   const factory SeerSimilarity({
+    @JsonKey(name: 'similarity_model_version')
     required String similarityModelVersion,
-    required String requestHash,
+    @JsonKey(name: 'request_hash') required String requestHash,
   }) = _SeerSimilarity;
 
   factory SeerSimilarity.fromJson(Map<String, dynamic> json) =>

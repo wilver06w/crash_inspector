@@ -1,5 +1,5 @@
 import 'package:crash_inspector/src/features/list/data/data_sources/remote/abstract_list_api_remote.dart';
-import 'package:crash_inspector/src/features/list/data/models/list_errors_models.dart';
+import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 import 'package:crash_inspector/src/shared/http/failures.dart';
 import 'package:crash_inspector/src/shared/http/http_client.dart';
 import 'package:crash_inspector/src/shared/utils/preferences.dart';
@@ -18,8 +18,9 @@ class ListErrorsImplApiRemote extends AbstractListErrorApiRemote {
   final issuesUrl = 'issues/';
 
   @override
-  Future<ListErrorsModels> getListErrors() async {
+  Future<List<ErrorsModel>> getListErrors() async {
     try {
+      httpClient.msDio.options.baseUrl = baseUrl;
       final response = await httpClient.msDio.get<dynamic>(
         '${preferences.selectedSentryConfig?.organizationId ?? ''}/${preferences.selectedSentryConfig?.projectId ?? ''}/$issuesUrl',
         options: Options(
@@ -29,12 +30,16 @@ class ListErrorsImplApiRemote extends AbstractListErrorApiRemote {
           },
         ),
       );
-      final value = response.data as Map<String, dynamic>;
-      return ListErrorsModels.fromJson(value);
+      final errors = (response.data as List)
+          .map((e) => ErrorsModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+      return errors;
     } on DioException catch (error) {
       throw DioFailure.decode(error);
     } on Exception catch (error) {
       throw ExceptionFailure.decode(error);
+    } on Error catch (error) {
+      throw ErrorFailure.decode(error);
     }
   }
 }
