@@ -1,11 +1,10 @@
 part of 'package:crash_inspector/src/features/home/presentation/page.dart';
 
 class Body extends StatelessWidget {
-  Body({
+  const Body({
     super.key,
   });
 
-  final formKeyPerson = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final prefs = Modular.get<Preferences>();

@@ -1,26 +1,29 @@
-part of 'package:crash_inspector/src/features/list/presentation/page.dart';
+part of 'package:crash_inspector/src/features/detail/presentation/page.dart';
 
 class Body extends StatelessWidget {
   const Body({
     super.key,
+    required this.error,
   });
 
+  final ErrorsModel error;
   @override
   Widget build(BuildContext context) {
-    final prefs = Modular.get<Preferences>();
     return Scaffold(
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'ID: ${prefs.selectedSentryConfig?.organizationId}',
+              UtilGlobals.recortText(
+                error.title,
+              ),
             ),
           ],
         ),
       ),
       body: SafeArea(
-        child: BlocBuilder<BlocList, ListState>(
+        child: BlocBuilder<BlocDetail, DetailState>(
           builder: (context, state) {
             final listErrors = state.model.listErrorsModel;
 
@@ -31,11 +34,7 @@ class Body extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: listErrors.length,
                       itemBuilder: (context, index) {
-                        final config = listErrors[index];
-                        return ErrorItem(
-                          error: config,
-                          onTap: () => VakaRoute.navDetail(config),
-                        );
+                        return const SizedBox.shrink();
                       },
                     ),
                   )

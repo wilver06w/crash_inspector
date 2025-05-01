@@ -4,6 +4,8 @@ import 'package:crash_inspector/src/features/home/presentation/page.dart'
 import 'package:crash_inspector/src/features/list/inject.dart';
 import 'package:crash_inspector/src/features/list/presentation/page.dart'
     as list;
+import 'package:crash_inspector/src/features/detail/presentation/page.dart'
+    as detail;
 import 'package:crash_inspector/src/shared/http/http_client.dart';
 import 'package:crash_inspector/src/features/add/presentation/page.dart' as add;
 import 'package:crash_inspector/src/shared/utils/preferences.dart';
@@ -32,10 +34,11 @@ class GlobalModule extends Module {
       '/list_errors',
       child: (context) => const list.Page(),
     );
-    // r.child(
-    //   '/list_errors',
-
-    //   child: (context) => const list.Page(configModel: ,),
-    // );
+    r.child(
+      '/detail',
+      child: (context) => detail.Page(
+        error: (r.args.data ?? {})['error'],
+      ),
+    );
   }
 }

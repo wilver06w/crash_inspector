@@ -1,7 +1,6 @@
 import 'package:crash_inspector/generated/l10n.dart';
+import 'package:crash_inspector/src/features/detail/presentation/bloc/bloc.dart';
 import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
-import 'package:crash_inspector/src/features/list/presentation/bloc/bloc.dart';
 import 'package:crash_inspector/src/shared/http/http_client.dart'
     hide ModularWatchExtension;
 import 'package:crash_inspector/src/shared/utils/navigation.dart';
@@ -14,31 +13,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart'
     hide ModularWatchExtension;
 
-part 'package:crash_inspector/src/features/list/presentation/_sections/body.dart';
-part 'package:crash_inspector/src/features/list/presentation/_sections/error_item.dart';
+part 'package:crash_inspector/src/features/detail/presentation/_sections/body.dart';
 
 class Page extends StatelessWidget {
   const Page({
     super.key,
+    required this.error,
   });
 
+  final ErrorsModel error;
   @override
   Widget build(BuildContext context) {
-    final getListErrorsUseCase = Modular.get<GetListErrorsUseCase>();
-
     return BlocProvider(
-      create: (context) => BlocList(
-        getListErrorsUseCase: getListErrorsUseCase,
-      )..add(const GetListErrorsEvent()),
-      child: BlocListener<BlocList, ListState>(
+      create: (context) => BlocDetail(),
+      child: BlocListener<BlocDetail, DetailState>(
         listener: _listener,
-        child: Body(),
+        child: Body(
+          error: error,
+        ),
       ),
     );
   }
 }
 
-Future<void> _listener(BuildContext context, ListState state) async {
+Future<void> _listener(BuildContext context, DetailState state) async {
   if (state is LoadingGetSentryConfigsState) {
     AppLoading.show(context);
   } else if (state is ErrorGetSentryConfigsState) {

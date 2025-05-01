@@ -1,3 +1,4 @@
+import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class VakaRoute {
@@ -10,6 +11,15 @@ class VakaRoute {
   static Future<bool?> navListErrors() {
     return Modular.to.pushNamed(
       '/list_errors',
+    );
+  }
+
+  static Future<bool?> navDetail(ErrorsModel error) {
+    return Modular.to.pushNamed(
+      '/detail',
+      arguments: {
+        'error': error,
+      },
     );
   }
 

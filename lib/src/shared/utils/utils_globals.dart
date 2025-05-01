@@ -6,6 +6,11 @@ class UtilGlobals {
     return '${input.substring(0, 2)}...${input.substring(input.length - 2)}';
   }
 
+  static String recortText(String input) {
+    if (input.length < 25) return input;
+    return input.substring(0, 25);
+  }
+
   static IconData getErrorIcon(String level) {
     switch (level.toLowerCase()) {
       case 'error':
