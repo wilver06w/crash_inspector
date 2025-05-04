@@ -1,11 +1,12 @@
-import 'package:crash_inspector/generated/l10n.dart';
-import 'package:crash_inspector/src/shared/http/http_client.dart'
-    hide ModularWatchExtension;
-import 'package:crash_inspector/src/shared/models/sentry_config.dart';
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
+// import 'package:crash_inspector/src/shared/http/http_client.dart'
+//     hide ModularWatchExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../generated/l10n.dart';
+import '../../../shared/http/http_client.dart' hide ModularWatchExtension;
+import '../../../shared/models/sentry_config.dart';
+import '../../../shared/utils/preferences.dart';
 import 'bloc/bloc.dart';
 
 part 'package:crash_inspector/src/features/add/presentation/_sections/add_view.dart';
@@ -15,8 +16,8 @@ class Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddBloc(),
+    return BlocProvider<AddBloc>(
+      create: (BuildContext context) => AddBloc(),
       child: const BlocListener<AddBloc, AddState>(
         listener: _listener,
         child: AddView(),

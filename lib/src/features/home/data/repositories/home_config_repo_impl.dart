@@ -1,21 +1,21 @@
-import 'package:crash_inspector/src/features/home/data/data_sources/remote/sentry_impl_api.dart';
-import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/features/home/domain/repositories/abstract_sentry_config_repository.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:crash_inspector/src/shared/http/failures.dart';
+import '../../../../shared/http/failures.dart';
+import '../../domain/models/sentry_config_model.dart';
+import '../../domain/repositories/abstract_sentry_config_repository.dart';
+import '../data_sources/remote/home_impl_api.dart';
 
 class SentryRepositoryImpl extends AbstractSentryConfigRepository {
   SentryRepositoryImpl({
     required this.apiRemote,
   });
-  final SentryImplApiRemote apiRemote;
+  final HomeImplApiRemote apiRemote;
 
   @override
   Future<Either<Failure, List<SentryConfigModel>>> getSentryConfigs() async {
     try {
-      final result = await apiRemote.getSentryConfigs();
-      return Right(result);
+      final List<SentryConfigModel> result = await apiRemote.getSentryConfigs();
+      return Right<Failure, List<SentryConfigModel>>(result);
     } on Failure catch (e) {
       return Left<Failure, List<SentryConfigModel>>(e);
     }
@@ -26,10 +26,10 @@ class SentryRepositoryImpl extends AbstractSentryConfigRepository {
     int index,
   ) async {
     try {
-      final result = await apiRemote.removeSentryConfig(
+      final SentryConfigModel result = await apiRemote.removeSentryConfig(
         index,
       );
-      return Right(result);
+      return Right<Failure, SentryConfigModel>(result);
     } on Failure catch (e) {
       return Left<Failure, SentryConfigModel>(e);
     }

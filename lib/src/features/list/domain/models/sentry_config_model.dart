@@ -1,9 +1,6 @@
-import 'package:crash_inspector/src/shared/models/sentry_config.dart';
+import '../../../../shared/models/sentry_config.dart';
 
 class SentryConfigModel {
-  final String organizationId;
-  final String projectId;
-  final String token;
 
   const SentryConfigModel({
     required this.organizationId,
@@ -18,4 +15,7 @@ class SentryConfigModel {
       token: entity.token,
     );
   }
+  final String organizationId;
+  final String projectId;
+  final String token;
 }

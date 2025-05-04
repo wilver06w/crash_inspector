@@ -6,7 +6,7 @@ class AddView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddBloc, AddState>(
-      builder: (context, state) {
+      builder: (BuildContext context, AddState state) {
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -17,10 +17,10 @@ class AddView extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const SourceDropdown(),
                 const SizedBox(height: 24),
-                if (state.model.selectedSource == 'Sentry') ...[
+                if (state.model.selectedSource == 'Sentry') ...<Widget>[
                   const SentryInputs(),
                 ],
               ],
@@ -38,10 +38,10 @@ class SourceDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddBloc, AddState>(
-      builder: (context, state) {
+      builder: (BuildContext context, AddState state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Text(
               S.current.selectCrashSource,
               style: const TextStyle(
@@ -92,14 +92,14 @@ class SentryInputs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddBloc, AddState>(
-      builder: (context, state) {
+      builder: (BuildContext context, AddState state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             SentryInputField(
               label: S.current.organizationId,
               value: state.model.sentryOrganizationId,
-              onChanged: (value) {
+              onChanged: (String value) {
                 context.read<AddBloc>().add(
                       UpdateSentryOrganizationIdEvent(organizationId: value),
                     );
@@ -109,7 +109,7 @@ class SentryInputs extends StatelessWidget {
             SentryInputField(
               label: S.current.projectId,
               value: state.model.sentryProjectId,
-              onChanged: (value) {
+              onChanged: (String value) {
                 context.read<AddBloc>().add(
                       UpdateSentryProjectIdEvent(projectId: value),
                     );
@@ -119,7 +119,7 @@ class SentryInputs extends StatelessWidget {
             SentryInputField(
               label: S.current.token,
               value: state.model.sentryToken,
-              onChanged: (value) {
+              onChanged: (String value) {
                 context.read<AddBloc>().add(
                       UpdateSentryTokenEvent(token: value),
                     );
@@ -137,11 +137,11 @@ class SentryInputs extends StatelessWidget {
 
 class SentryInputField extends StatelessWidget {
   const SentryInputField({
-    super.key,
     required this.label,
     required this.value,
     required this.onChanged,
     this.isPassword = false,
+    super.key,
   });
 
   final String label;
@@ -153,7 +153,7 @@ class SentryInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Text(
           label,
           style: const TextStyle(
@@ -189,15 +189,15 @@ class SaveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prefs = Modular.get<Preferences>();
+    final Preferences prefs = Modular.get<Preferences>();
     return BlocBuilder<AddBloc, AddState>(
-      builder: (context, state) {
+      builder: (BuildContext context, AddState state) {
         return SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: state.model.isFormFilledCompleted
                 ? () {
-                    final config = SentryConfig(
+                    final SentryConfig config = SentryConfig(
                       organizationId: state.model.sentryOrganizationId,
                       projectId: state.model.sentryProjectId,
                       token: state.model.sentryToken,

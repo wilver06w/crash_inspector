@@ -1,14 +1,14 @@
-import 'package:crash_inspector/src/features/home/inject.dart';
-import 'package:crash_inspector/src/features/home/presentation/page.dart'
-    as home;
-import 'package:crash_inspector/src/features/list/inject.dart';
-import 'package:crash_inspector/src/features/list/presentation/page.dart'
-    as list;
-import 'package:crash_inspector/src/features/detail/presentation/page.dart'
-    as detail;
-import 'package:crash_inspector/src/shared/http/http_client.dart';
-import 'package:crash_inspector/src/features/add/presentation/page.dart' as add;
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
+import 'package:flutter/material.dart';
+
+import '../features/add/presentation/page.dart' as add;
+import '../features/detail/presentation/page.dart' as detail;
+import '../features/home/inject.dart';
+import '../features/home/presentation/page.dart' as home;
+import '../features/list/data/models/errors_model.dart';
+import '../features/list/inject.dart';
+import '../features/list/presentation/page.dart' as list;
+import 'http/http_client.dart';
+import 'utils/preferences.dart';
 
 class GlobalModule extends Module {
   @override
@@ -24,21 +24,28 @@ class GlobalModule extends Module {
   void routes(RouteManager r) {
     r.child(
       Modular.initialRoute,
-      child: (context) => const home.Page(),
+      child: (BuildContext context) => const home.Page(),
     );
     r.child(
       '/add',
-      child: (context) => const add.Page(),
+      child: (BuildContext context) => const add.Page(),
     );
     r.child(
       '/list_errors',
-      child: (context) => const list.Page(),
+      child: (BuildContext context) => const list.Page(),
     );
     r.child(
       '/detail',
-      child: (context) => detail.Page(
-        error: (r.args.data ?? {})['error'],
-      ),
+      child: (BuildContext context) {
+        final Object? rawData = r.args.data;
+        final Map<String, dynamic> data =
+            (rawData as Map<String, dynamic>?) ?? <String, dynamic>{};
+        final ErrorsModel error = data['error'] as ErrorsModel;
+
+        return detail.Page(
+          error: error,
+        );
+      },
     );
   }
 }

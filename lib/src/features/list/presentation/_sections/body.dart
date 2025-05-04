@@ -7,12 +7,12 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prefs = Modular.get<Preferences>();
+    final Preferences prefs = Modular.get<Preferences>();
     return Scaffold(
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             Text(
               'ID: ${prefs.selectedSentryConfig?.organizationId}',
             ),
@@ -21,17 +21,17 @@ class Body extends StatelessWidget {
       ),
       body: SafeArea(
         child: BlocBuilder<BlocList, ListState>(
-          builder: (context, state) {
-            final listErrors = state.model.listErrorsModel;
+          builder: (BuildContext context, ListState state) {
+            final List<ErrorsModel>? listErrors = state.model.listErrorsModel;
 
             return Column(
-              children: [
+              children: <Widget>[
                 if (listErrors != null && listErrors.isNotEmpty)
                   Expanded(
                     child: ListView.builder(
                       itemCount: listErrors.length,
-                      itemBuilder: (context, index) {
-                        final config = listErrors[index];
+                      itemBuilder: (BuildContext context, int index) {
+                        final ErrorsModel config = listErrors[index];
                         return ErrorItem(
                           error: config,
                           onTap: () => VakaRoute.navDetail(config),

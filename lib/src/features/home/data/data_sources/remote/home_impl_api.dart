@@ -1,12 +1,13 @@
-import 'package:crash_inspector/generated/l10n.dart';
-import 'package:crash_inspector/src/features/home/data/data_sources/remote/abstract_sentry_api_remote.dart';
-import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/shared/http/failures.dart';
-import 'package:crash_inspector/src/shared/http/http_client.dart';
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../shared/http/failures.dart';
+import '../../../../../shared/http/http_client.dart';
+import '../../../../../shared/models/sentry_config.dart';
+import '../../../../../shared/utils/preferences.dart';
+import '../../../domain/models/sentry_config_model.dart';
+import 'home_api_remote.dart';
 
-class SentryImplApiRemote extends AbstractSentryApiRemote {
-  SentryImplApiRemote({
+class HomeImplApiRemote extends HomeApiRemote {
+  HomeImplApiRemote({
     required this.preferences,
   });
 
@@ -15,9 +16,9 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
   @override
   Future<List<SentryConfigModel>> getSentryConfigs() async {
     try {
-      final configs = preferences.sentryConfigs;
+      final List<SentryConfig> configs = preferences.sentryConfigs;
       return configs
-          .map((config) => SentryConfigModel.fromEntity(config))
+          .map((SentryConfig config) => SentryConfigModel.fromEntity(config))
           .toList();
     } on DioException catch (error) {
       throw DioFailure.decode(error);
@@ -29,9 +30,9 @@ class SentryImplApiRemote extends AbstractSentryApiRemote {
   @override
   Future<SentryConfigModel> removeSentryConfig(int index) async {
     try {
-      final configs = preferences.sentryConfigs;
+      final List<SentryConfig> configs = preferences.sentryConfigs;
       if (index >= 0 && index < configs.length) {
-        final configToRemove = configs[index];
+        final SentryConfig configToRemove = configs[index];
         preferences.removeSentryConfig(index);
         return SentryConfigModel.fromEntity(configToRemove);
       }

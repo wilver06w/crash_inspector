@@ -2,15 +2,15 @@ part of 'package:crash_inspector/src/features/detail/presentation/page.dart';
 
 class ErrorDetail extends StatelessWidget {
   const ErrorDetail({
-    super.key,
     required this.error,
+    super.key,
   });
 
   final ErrorsModel error;
 
   @override
   Widget build(BuildContext context) {
-    final dateFormat = DateFormat.yMMMd().add_Hm();
+    final DateFormat dateFormat = DateFormat.yMMMd().add_Hm();
 
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +24,7 @@ class ErrorDetail extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             const SectionTitle(
               title: '🧠 General',
             ),
@@ -33,7 +33,9 @@ class ErrorDetail extends StatelessWidget {
             InfoRow(title: 'Issue Category', value: error.issueCategory),
             InfoRow(title: 'Level', value: error.level),
             InfoRow(
-                title: 'Status', value: '${error.status} / ${error.substatus}'),
+              title: 'Status',
+              value: '${error.status} / ${error.substatus}',
+            ),
             const SizedBox(height: 16),
             const SectionTitle(title: '📁 Proyecto'),
             InfoRow(title: 'Name', value: error.project.name),
@@ -45,26 +47,34 @@ class ErrorDetail extends StatelessWidget {
             InfoRow(title: 'Filename', value: error.metadata.filename),
             InfoRow(title: 'Function', value: error.metadata.function),
             InfoRow(
-                title: 'SDK',
-                value:
-                    '${error.metadata.sdk.name} (${error.metadata.sdk.nameNormalized})'),
+              title: 'SDK',
+              value:
+                  '${error.metadata.sdk.name} (${error.metadata.sdk.nameNormalized})',
+            ),
             InfoRow(
-                title: 'Initial Priority',
-                value: error.metadata.initialPriority.toString()),
+              title: 'Initial Priority',
+              value: error.metadata.initialPriority.toString(),
+            ),
             InfoRow(
-                title: 'Display With Tree Label',
-                value: error.metadata.displayTitleWithTreeLabel.toString()),
+              title: 'Display With Tree Label',
+              value: error.metadata.displayTitleWithTreeLabel.toString(),
+            ),
             InfoRow(
-                title: 'In-App Frame Mix', value: error.metadata.inAppFrameMix),
+              title: 'In-App Frame Mix',
+              value: error.metadata.inAppFrameMix,
+            ),
             InfoRow(title: 'Value', value: error.metadata.value),
             InfoRow(
-                title: 'Assigned To',
-                value: error.assignedTo?.toString() ?? 'N/A'),
+              title: 'Assigned To',
+              value: error.assignedTo?.toString() ?? 'N/A',
+            ),
             const SizedBox(height: 16),
             const SectionTitle(title: '🔗 IDs y Vínculos'),
             InfoRow(title: 'ID', value: error.id),
             InfoRow(
-                title: 'Share ID', value: error.shareId?.toString() ?? 'N/A'),
+              title: 'Share ID',
+              value: error.shareId?.toString() ?? 'N/A',
+            ),
             InfoRow(title: 'Short ID', value: error.shortId),
             InfoRow(title: 'Permalink', value: error.permalink),
             const SizedBox(height: 16),
@@ -73,15 +83,19 @@ class ErrorDetail extends StatelessWidget {
             InfoRow(title: 'User Count', value: error.userCount.toString()),
             InfoRow(title: 'Comments', value: error.numComments.toString()),
             InfoRow(
-                title: 'First Seen', value: dateFormat.format(error.firstSeen)),
+              title: 'First Seen',
+              value: dateFormat.format(error.firstSeen),
+            ),
             InfoRow(
-                title: 'Last Seen', value: dateFormat.format(error.lastSeen)),
+              title: 'Last Seen',
+              value: dateFormat.format(error.lastSeen),
+            ),
             const SizedBox(height: 16),
             const SectionTitle(title: '🚩 Flags'),
             Wrap(
               spacing: 10,
               runSpacing: 6,
-              children: [
+              children: <Widget>[
                 FlagChip(title: 'Public', value: error.isPublic),
                 FlagChip(title: 'Bookmarked', value: error.isBookmarked),
                 FlagChip(title: 'Subscribed', value: error.isSubscribed),
@@ -90,14 +104,16 @@ class ErrorDetail extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            if (error.metadata.seerSimilarity != null) ...[
+            if (error.metadata.seerSimilarity != null) ...<Widget>[
               const SectionTitle(title: '🧬 Seer Similarity'),
               InfoRow(
-                  title: 'Model Version',
-                  value: error.metadata.seerSimilarity!.similarityModelVersion),
+                title: 'Model Version',
+                value: error.metadata.seerSimilarity!.similarityModelVersion,
+              ),
               InfoRow(
-                  title: 'Request Hash',
-                  value: error.metadata.seerSimilarity!.requestHash),
+                title: 'Request Hash',
+                value: error.metadata.seerSimilarity!.requestHash,
+              ),
             ],
           ],
         ),
@@ -108,8 +124,8 @@ class ErrorDetail extends StatelessWidget {
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
-    super.key,
     required this.title,
+    super.key,
   });
 
   final String title;
@@ -128,8 +144,8 @@ class SectionTitle extends StatelessWidget {
 
 class InfoRow extends StatelessWidget {
   const InfoRow({
-    super.key,
     required this.title,
+    super.key,
     this.value,
   });
 
@@ -142,9 +158,9 @@ class InfoRow extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Text(
-            "$title: ",
+            '$title: ',
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           Expanded(
@@ -158,9 +174,9 @@ class InfoRow extends StatelessWidget {
 
 class FlagChip extends StatelessWidget {
   const FlagChip({
-    super.key,
     required this.title,
     required this.value,
+    super.key,
   });
 
   final String title;

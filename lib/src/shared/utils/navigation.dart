@@ -1,5 +1,6 @@
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../features/list/data/models/errors_model.dart';
 
 class VakaRoute {
   static Future<bool?> navAdd() {
@@ -17,7 +18,7 @@ class VakaRoute {
   static Future<bool?> navDetail(ErrorsModel error) {
     return Modular.to.pushNamed(
       '/detail',
-      arguments: {
+      arguments: <String, ErrorsModel>{
         'error': error,
       },
     );
@@ -121,18 +122,18 @@ class VakaRoute {
   }
 
   static Future<Object?> navDetailOrder({required int id}) async {
-    return await Modular.to.pushNamed(
+    return Modular.to.pushNamed(
       '/detail_order',
-      arguments: {
+      arguments: <String, int>{
         'id': id,
       },
     );
   }
 
   static Future<Object?> navDetailOrderReplacement({required int id}) async {
-    return await Modular.to.pushReplacementNamed(
+    return Modular.to.pushReplacementNamed(
       '/detail_order',
-      arguments: {
+      arguments: <String, int>{
         'id': id,
       },
     );

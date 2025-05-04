@@ -7,18 +7,18 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prefs = Modular.get<Preferences>();
+    final Preferences prefs = Modular.get<Preferences>();
     return Scaffold(
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             Text(
               S.current.crashInspector,
             ),
             IconButton(
               onPressed: () async {
-                final result = await VakaRoute.navAdd() ?? false;
+                final bool result = await VakaRoute.navAdd() ?? false;
                 if (result) {
                   if (context.mounted) {
                     context.read<BlocHome>().add(
@@ -36,17 +36,18 @@ class Body extends StatelessWidget {
       ),
       body: SafeArea(
         child: BlocBuilder<BlocHome, HomeState>(
-          builder: (context, state) {
-            final sentryConfigs = state.model.sentryConfigs;
+          builder: (BuildContext context, HomeState state) {
+            final List<SentryConfigModel> sentryConfigs =
+                state.model.sentryConfigs;
 
             return Column(
-              children: [
+              children: <Widget>[
                 if (sentryConfigs.isNotEmpty)
                   Expanded(
                     child: ListView.builder(
                       itemCount: sentryConfigs.length,
-                      itemBuilder: (context, index) {
-                        final config = sentryConfigs[index];
+                      itemBuilder: (BuildContext context, int index) {
+                        final SentryConfigModel config = sentryConfigs[index];
                         return Card(
                           margin: const EdgeInsets.symmetric(
                             horizontal: 16.0,
@@ -55,7 +56,8 @@ class Body extends StatelessWidget {
                           child: ListTile(
                             onTap: () {
                               prefs.selectedSentryConfigIndex = index;
-                              final value = prefs.selectedSentryConfig;
+                              final SentryConfig? value =
+                                  prefs.selectedSentryConfig;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(value?.organizationId ?? ''),

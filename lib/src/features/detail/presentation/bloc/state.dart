@@ -5,7 +5,7 @@ abstract class DetailState extends Equatable {
   final Model model;
 
   @override
-  List<Object?> get props => [model];
+  List<Object?> get props => <Object?>[model];
 }
 
 class InitialState extends DetailState {
@@ -44,7 +44,7 @@ class Model extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props => <Object?>[
         listErrorsModel,
       ];
 }

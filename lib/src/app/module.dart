@@ -1,5 +1,5 @@
-import 'package:crash_inspector/src/shared/http/http_client.dart';
-import 'package:crash_inspector/src/shared/module.dart';
+import '../shared/http/http_client.dart';
+import '../shared/module.dart';
 
 class AppModule extends Module {
   @override

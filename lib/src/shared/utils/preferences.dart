@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:crash_inspector/src/shared/models/sentry_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/sentry_config.dart';
 
 class Preferences {
   factory Preferences() => _singleton;
@@ -16,7 +17,7 @@ class Preferences {
   }
 
   void initTests() {
-    final values = <String, Object>{};
+    final Map<String, Object> values = <String, Object>{};
     // ignore: invalid_use_of_visible_for_testing_member
     SharedPreferences.setMockInitialValues(values);
   }
@@ -25,33 +26,36 @@ class Preferences {
   set idUser(int value) => _prefs?.setInt('idUser', value);
 
   List<SentryConfig> get sentryConfigs {
-    final value = _prefs?.getString('sentryConfigs');
+    final String? value = _prefs?.getString('sentryConfigs');
 
     if (value != null) {
-      final List<dynamic> configsData = json.decode(value);
+      final List<dynamic> configsData = json.decode(value) as List<dynamic>;
       return configsData
-          .map((data) => SentryConfig.fromJson(data as Map<String, dynamic>))
+          .map(
+            (dynamic data) =>
+                SentryConfig.fromJson(data as Map<String, dynamic>),
+          )
           .toList();
     }
 
-    return [];
+    return <SentryConfig>[];
   }
 
   void addSentryConfig(SentryConfig config) {
-    final currentConfigs = sentryConfigs;
+    final List<SentryConfig> currentConfigs = sentryConfigs;
     currentConfigs.add(config);
-    final configsJson = json.encode(
-      currentConfigs.map((config) => config.toJson()).toList(),
+    final String configsJson = json.encode(
+      currentConfigs.map((SentryConfig config) => config.toJson()).toList(),
     );
     _prefs?.setString('sentryConfigs', configsJson);
   }
 
   void removeSentryConfig(int index) {
-    final currentConfigs = sentryConfigs;
+    final List<SentryConfig> currentConfigs = sentryConfigs;
     if (index >= 0 && index < currentConfigs.length) {
       currentConfigs.removeAt(index);
-      final configsJson = json.encode(
-        currentConfigs.map((config) => config.toJson()).toList(),
+      final String configsJson = json.encode(
+        currentConfigs.map((SentryConfig config) => config.toJson()).toList(),
       );
       _prefs?.setString('sentryConfigs', configsJson);
     }
@@ -72,7 +76,7 @@ class Preferences {
   }
 
   SentryConfig? get selectedSentryConfig {
-    final index = selectedSentryConfigIndex;
+    final int? index = selectedSentryConfigIndex;
     if (index != null && index >= 0 && index < sentryConfigs.length) {
       return sentryConfigs[index];
     }

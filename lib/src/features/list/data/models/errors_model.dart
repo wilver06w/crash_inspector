@@ -43,14 +43,12 @@ class ErrorsModel with _$ErrorsModel {
 class Metadata with _$Metadata {
   const factory Metadata({
     required String value,
-    String? type,
+    required Sdk sdk, @JsonKey(name: 'initial_priority') required int initialPriority, String? type,
     String? filename,
     String? function,
     @JsonKey(name: 'display_title_with_tree_label')
     bool? displayTitleWithTreeLabel,
     @JsonKey(name: 'in_app_frame_mix') String? inAppFrameMix,
-    required Sdk sdk,
-    @JsonKey(name: 'initial_priority') required int initialPriority,
     dynamic title,
     @JsonKey(name: 'seer_similarity') SeerSimilarity? seerSimilarity,
   }) = _Metadata;

@@ -4,7 +4,7 @@ abstract class ListEvent extends Equatable {
   const ListEvent();
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => <Object?>[];
 }
 
 class GetListErrorsEvent extends ListEvent {

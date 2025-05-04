@@ -1,18 +1,18 @@
-import 'package:crash_inspector/generated/l10n.dart';
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
-import 'package:crash_inspector/src/features/list/presentation/bloc/bloc.dart';
-import 'package:crash_inspector/src/shared/http/http_client.dart'
-    hide ModularWatchExtension;
-import 'package:crash_inspector/src/shared/utils/navigation.dart';
-import 'package:intl/intl.dart';
-import 'package:crash_inspector/src/shared/utils/loading.dart';
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
-import 'package:crash_inspector/src/shared/utils/utils_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart'
     hide ModularWatchExtension;
+import 'package:intl/intl.dart';
+
+import '../../../../generated/l10n.dart';
+import '../../../shared/http/http_client.dart' hide ModularWatchExtension;
+import '../../../shared/utils/loading.dart';
+import '../../../shared/utils/navigation.dart';
+import '../../../shared/utils/preferences.dart';
+import '../../../shared/utils/utils_globals.dart';
+import '../data/models/errors_model.dart';
+import '../domain/usecases/get_list_errors_usecase.dart';
+import 'bloc/bloc.dart';
 
 part 'package:crash_inspector/src/features/list/presentation/_sections/body.dart';
 part 'package:crash_inspector/src/features/list/presentation/_sections/error_item.dart';
@@ -24,13 +24,14 @@ class Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final getListErrorsUseCase = Modular.get<GetListErrorsUseCase>();
+    final GetListErrorsUseCase getListErrorsUseCase =
+        Modular.get<GetListErrorsUseCase>();
 
-    return BlocProvider(
-      create: (context) => BlocList(
+    return BlocProvider<BlocList>(
+      create: (BuildContext context) => BlocList(
         getListErrorsUseCase: getListErrorsUseCase,
       )..add(const GetListErrorsEvent()),
-      child: BlocListener<BlocList, ListState>(
+      child: const BlocListener<BlocList, ListState>(
         listener: _listener,
         child: Body(),
       ),

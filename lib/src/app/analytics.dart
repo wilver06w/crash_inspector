@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 class AppAnalytics {
   AppAnalytics._();
-  static final instance = AppAnalytics._();
+  static final AppAnalytics instance = AppAnalytics._();
 
   Future<void> captureError(
     dynamic error, {
@@ -15,7 +15,7 @@ class AppAnalytics {
     String? endpoint,
   }) async {
     // Crear mapa base de datos extra
-    final fullExtraData = extraData ?? <String, dynamic>{};
+    final Map<String, dynamic> fullExtraData = extraData ?? <String, dynamic>{};
 
     // Si se proporciona un endpoint, añadirlo a los datos extra
     if (endpoint != null && endpoint.isNotEmpty) {
@@ -23,7 +23,7 @@ class AppAnalytics {
     }
 
     // Determinar el tipo de error y extraer información relevante
-    var actualErrorType = errorType ?? 'unknown_error';
+    String actualErrorType = errorType ?? 'unknown_error';
 
     // Procesar diferentes tipos de errores
     if (error is DioException) {
@@ -61,7 +61,7 @@ class AppAnalytics {
     );
 
     // Log additional context
-    fullExtraData.forEach((key, value) {
+    fullExtraData.forEach((String key, dynamic value) {
       developer.log(
         'Error context: $key',
         error: value,

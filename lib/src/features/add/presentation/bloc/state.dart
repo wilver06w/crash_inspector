@@ -5,7 +5,7 @@ abstract class AddState extends Equatable {
   final Model model;
 
   @override
-  List<Object?> get props => [model];
+  List<Object?> get props => <Object>[model];
 }
 
 class InitialState extends AddState {
@@ -30,7 +30,7 @@ class LoadedChangeSentryToken extends AddState {
 
 class Model extends Equatable {
   const Model({
-    this.sources = const [
+    this.sources = const <String>[
       'Sentry',
       'Crashlytics',
       'Other',
@@ -71,7 +71,7 @@ class Model extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
+    return <Object?>[
       sources,
       selectedSource,
       sentryOrganizationId,

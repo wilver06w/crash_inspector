@@ -4,7 +4,7 @@ abstract class AddEvent extends Equatable {
   const AddEvent();
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => List<Object>.empty();
 }
 
 class GetOrderListEvent extends AddEvent {
@@ -26,7 +26,7 @@ class UpdateSelectedSourceEvent extends AddEvent {
   final String selectedSource;
 
   @override
-  List<Object?> get props => [selectedSource];
+  List<Object?> get props => <Object>[selectedSource];
 }
 
 class UpdateSentryOrganizationIdEvent extends AddEvent {
@@ -34,7 +34,7 @@ class UpdateSentryOrganizationIdEvent extends AddEvent {
   final String organizationId;
 
   @override
-  List<Object?> get props => [organizationId];
+  List<Object?> get props => <Object>[organizationId];
 }
 
 class UpdateSentryProjectIdEvent extends AddEvent {
@@ -42,7 +42,7 @@ class UpdateSentryProjectIdEvent extends AddEvent {
   final String projectId;
 
   @override
-  List<Object?> get props => [projectId];
+  List<Object?> get props => <Object>[projectId];
 }
 
 class UpdateSentryTokenEvent extends AddEvent {
@@ -50,5 +50,5 @@ class UpdateSentryTokenEvent extends AddEvent {
   final String token;
 
   @override
-  List<Object?> get props => [token];
+  List<Object?> get props => <Object>[token];
 }

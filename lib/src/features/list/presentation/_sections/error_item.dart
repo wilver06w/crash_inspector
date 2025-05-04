@@ -2,16 +2,16 @@ part of 'package:crash_inspector/src/features/list/presentation/page.dart';
 
 class ErrorItem extends StatelessWidget {
   const ErrorItem({
-    super.key,
     required this.error,
     required this.onTap,
+    super.key,
   });
   final ErrorsModel error;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final dateFormat = DateFormat.yMMMd().add_Hm();
+    final DateFormat dateFormat = DateFormat.yMMMd().add_Hm();
 
     return InkWell(
       onTap: onTap,
@@ -29,7 +29,7 @@ class ErrorItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
-            children: [
+            children: <Widget>[
               Icon(
                 UtilGlobals.getErrorIcon(
                   error.level,
@@ -43,7 +43,7 @@ class ErrorItem extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Text(
                       error.title,
                       style: Theme.of(context).textTheme.titleMedium,
@@ -70,7 +70,7 @@ class ErrorItem extends StatelessWidget {
                   ],
                 ),
               ),
-              if (error.isUnhandled) ...[
+              if (error.isUnhandled) ...<Widget>[
                 const SizedBox(width: 8),
                 const Icon(Icons.warning_amber_rounded, color: Colors.orange),
               ],

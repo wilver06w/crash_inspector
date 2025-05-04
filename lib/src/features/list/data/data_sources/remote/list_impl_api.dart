@@ -1,9 +1,10 @@
-import 'package:crash_inspector/src/features/list/data/data_sources/remote/abstract_list_api_remote.dart';
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/shared/http/failures.dart';
-import 'package:crash_inspector/src/shared/http/http_client.dart';
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
 import 'dart:io';
+
+import '../../../../../shared/http/failures.dart';
+import '../../../../../shared/http/http_client.dart';
+import '../../../../../shared/utils/preferences.dart';
+import '../../models/errors_model.dart';
+import 'list_api_remote.dart';
 
 class ListErrorsImplApiRemote extends AbstractListErrorApiRemote {
   ListErrorsImplApiRemote({
@@ -14,24 +15,24 @@ class ListErrorsImplApiRemote extends AbstractListErrorApiRemote {
   final Preferences preferences;
 
   final HttpClient httpClient;
-  final baseUrl = 'https://us.sentry.io/api/0/projects/';
-  final issuesUrl = 'issues/';
+  final String baseUrl = 'https://us.sentry.io/api/0/projects/';
+  final String issuesUrl = 'issues/';
 
   @override
   Future<List<ErrorsModel>> getListErrors() async {
     try {
       httpClient.msDio.options.baseUrl = baseUrl;
-      final response = await httpClient.msDio.get<dynamic>(
+      final Response<dynamic> response = await httpClient.msDio.get<dynamic>(
         '${preferences.selectedSentryConfig?.organizationId ?? ''}/${preferences.selectedSentryConfig?.projectId ?? ''}/$issuesUrl',
         options: Options(
-          headers: {
+          headers: <String, String>{
             HttpHeaders.authorizationHeader:
                 'Bearer ${preferences.selectedSentryConfig?.token}',
           },
         ),
       );
-      final errors = (response.data as List)
-          .map((e) => ErrorsModel.fromJson(e as Map<String, dynamic>))
+      final List<ErrorsModel> errors = (response.data as List<dynamic>)
+          .map((dynamic e) => ErrorsModel.fromJson(e as Map<String, dynamic>))
           .toList();
       return errors;
     } on DioException catch (error) {

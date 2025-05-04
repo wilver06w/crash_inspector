@@ -30,9 +30,13 @@ class AddBloc extends Bloc<AddEvent, AddState> {
     UpdateSentryOrganizationIdEvent event,
     Emitter<AddState> emit,
   ) {
-    emit(LoadedChangeSentryOrganizationId(state.model.copyWith(
-      sentryOrganizationId: event.organizationId,
-    )));
+    emit(
+      LoadedChangeSentryOrganizationId(
+        state.model.copyWith(
+          sentryOrganizationId: event.organizationId,
+        ),
+      ),
+    );
   }
 
   void _onUpdateSentryProjectId(

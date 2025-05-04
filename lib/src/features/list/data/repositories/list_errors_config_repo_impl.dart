@@ -1,9 +1,9 @@
-import 'package:crash_inspector/src/features/list/data/data_sources/remote/list_impl_api.dart';
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/features/list/domain/repositories/abstract_list_errors_config_repository.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:crash_inspector/src/shared/http/failures.dart';
+import '../../../../shared/http/failures.dart';
+import '../../domain/repositories/abstract_list_errors_config_repository.dart';
+import '../data_sources/remote/list_impl_api.dart';
+import '../models/errors_model.dart';
 
 class ListErrorsRepositoryImpl extends AbstractListErrorsRepository {
   ListErrorsRepositoryImpl({
@@ -14,8 +14,8 @@ class ListErrorsRepositoryImpl extends AbstractListErrorsRepository {
   @override
   Future<Either<Failure, List<ErrorsModel>>> getListErrors() async {
     try {
-      final result = await apiRemote.getListErrors();
-      return Right(result);
+      final List<ErrorsModel> result = await apiRemote.getListErrors();
+      return Right<Failure, List<ErrorsModel>>(result);
     } on Failure catch (e) {
       return Left<Failure, List<ErrorsModel>>(e);
     }

@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:crash_inspector/src/features/home/domain/models/sentry_config_model.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/get_sentry_configs_usecase.dart';
-import 'package:crash_inspector/src/features/home/domain/usecases/remove_sentry_config_usecase.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../domain/models/sentry_config_model.dart';
+import '../../domain/usecases/get_sentry_configs_usecase.dart';
+import '../../domain/usecases/remove_sentry_config_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
@@ -32,10 +35,11 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
       ),
     );
 
-    final getSentryConfigs = await getSentryConfigsUseCase.getSentryConfigs();
+    final Either<Failure, List<SentryConfigModel>> getSentryConfigs =
+        await getSentryConfigsUseCase.getSentryConfigs();
 
     getSentryConfigs.fold(
-      (failure) {
+      (Failure failure) {
         emit(
           ErrorGetSentryConfigsState(
             model: state.model,
@@ -43,7 +47,7 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
           ),
         );
       },
-      (configs) {
+      (List<SentryConfigModel> configs) {
         emit(
           LoadedGetSentryConfigsState(
             state.model.copyWith(
@@ -64,10 +68,11 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
         state.model,
       ),
     );
-    final removeConfig = await removeSentryConfigUseCase.call(event.index);
+    final Either<Failure, SentryConfigModel> removeConfig =
+        await removeSentryConfigUseCase.call(event.index);
 
     removeConfig.fold(
-      (failure) {
+      (Failure failure) {
         emit(
           ErrorRemoveSentryConfigState(
             model: state.model,
@@ -75,7 +80,7 @@ class BlocHome extends Bloc<HomeEvent, HomeState> {
           ),
         );
       },
-      (configs) {
+      (SentryConfigModel configs) {
         emit(
           LoadedRemoveSentryConfigState(
             model: state.model,

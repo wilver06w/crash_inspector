@@ -1,7 +1,8 @@
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/features/list/domain/repositories/abstract_list_errors_config_repository.dart';
-import 'package:crash_inspector/src/shared/http/failures.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../data/models/errors_model.dart';
+import '../repositories/abstract_list_errors_config_repository.dart';
 
 class GetListErrorsUseCase {
   GetListErrorsUseCase({
@@ -10,7 +11,7 @@ class GetListErrorsUseCase {
   final AbstractListErrorsRepository repository;
 
   Future<Either<Failure, List<ErrorsModel>>> getListErrors() async {
-    final result = await repository.getListErrors();
+    final Either<Failure, List<ErrorsModel>> result = await repository.getListErrors();
 
     return result.fold(
       Left.new,

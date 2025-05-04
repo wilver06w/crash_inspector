@@ -82,7 +82,7 @@ _$MetadataImpl _$$MetadataImplFromJson(Map<String, dynamic> json) =>
       seerSimilarity: json['seer_similarity'] == null
           ? null
           : SeerSimilarity.fromJson(
-              json['seer_similarity'] as Map<String, dynamic>),
+              json['seer_similarity'] as Map<String, dynamic>,),
     );
 
 Map<String, dynamic> _$$MetadataImplToJson(_$MetadataImpl instance) =>
@@ -116,7 +116,7 @@ _$SeerSimilarityImpl _$$SeerSimilarityImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$SeerSimilarityImplToJson(
-        _$SeerSimilarityImpl instance) =>
+        _$SeerSimilarityImpl instance,) =>
     <String, dynamic>{
       'similarity_model_version': instance.similarityModelVersion,
       'request_hash': instance.requestHash,

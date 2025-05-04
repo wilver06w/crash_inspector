@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:crash_inspector/src/features/list/data/models/errors_model.dart';
-import 'package:crash_inspector/src/features/list/domain/usecases/get_list_errors_usecase.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../data/models/errors_model.dart';
+import '../../domain/usecases/get_list_errors_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
@@ -28,10 +31,11 @@ class BlocList extends Bloc<ListEvent, ListState> {
       ),
     );
 
-    final getSentryConfigs = await getListErrorsUseCase.getListErrors();
+    final Either<Failure, List<ErrorsModel>> getSentryConfigs =
+        await getListErrorsUseCase.getListErrors();
 
     getSentryConfigs.fold(
-      (failure) {
+      (Failure failure) {
         emit(
           ErrorGetSentryConfigsState(
             model: state.model,
@@ -39,7 +43,7 @@ class BlocList extends Bloc<ListEvent, ListState> {
           ),
         );
       },
-      (errorsModel) {
+      (List<ErrorsModel> errorsModel) {
         emit(
           LoadedGetSentryConfigsState(
             state.model.copyWith(

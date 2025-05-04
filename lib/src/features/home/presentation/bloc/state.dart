@@ -5,7 +5,7 @@ abstract class HomeState extends Equatable {
   final Model model;
 
   @override
-  List<Object?> get props => [model];
+  List<Object?> get props => <Object?>[model];
 }
 
 class InitialState extends HomeState {
@@ -50,7 +50,7 @@ class ErrorRemoveSentryConfigState extends HomeState {
 
 class Model extends Equatable {
   const Model({
-    this.sentryConfigs = const [],
+    this.sentryConfigs = const <SentryConfigModel>[],
   });
 
   final List<SentryConfigModel> sentryConfigs;
@@ -64,7 +64,7 @@ class Model extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props => <Object?>[
         sentryConfigs,
       ];
 }

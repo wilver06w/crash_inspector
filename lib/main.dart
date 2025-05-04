@@ -1,14 +1,15 @@
-import 'package:crash_inspector/generated/l10n.dart';
-import 'package:crash_inspector/src/app/module.dart';
-import 'package:crash_inspector/src/shared/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'generated/l10n.dart';
+import 'src/app/module.dart';
+import 'src/shared/utils/preferences.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final prefs = Preferences();
+  final Preferences prefs = Preferences();
   await prefs.init();
 
   runApp(
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ),
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
-      localizationsDelegates: const [
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ],
       supportedLocales: S.delegate.supportedLocales,
       localeResolutionCallback: localeCallback,
-      builder: (context, child) {
+      builder: (BuildContext context, Widget? child) {
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
             textScaler: TextScaler.noScaling,
@@ -63,9 +64,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 }
 
 Locale localeCallback(Locale? locale, Iterable<Locale> supportedLocales) {
-  if (locale == null) return supportedLocales.first;
+  if (locale == null) {
+    return supportedLocales.first;
+  }
 
-  for (final supportedLocale in supportedLocales) {
+  for (final Locale supportedLocale in supportedLocales) {
     if (supportedLocale.languageCode == locale.languageCode &&
         supportedLocale.countryCode == locale.countryCode) {
       return supportedLocale;

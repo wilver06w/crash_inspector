@@ -1,19 +1,10 @@
 class SentryConfig {
-  final String organizationId;
-  final String projectId;
-  final String token;
 
   const SentryConfig({
     required this.organizationId,
     required this.projectId,
     required this.token,
   });
-
-  Map<String, dynamic> toJson() => {
-        'organizationId': organizationId,
-        'projectId': projectId,
-        'token': token,
-      };
 
   factory SentryConfig.fromJson(Map<String, dynamic> json) {
     return SentryConfig(
@@ -22,4 +13,13 @@ class SentryConfig {
       token: json['token'] as String,
     );
   }
+  final String organizationId;
+  final String projectId;
+  final String token;
+
+  Map<String, String> toJson() => <String, String>{
+        'organizationId': organizationId,
+        'projectId': projectId,
+        'token': token,
+      };
 }
