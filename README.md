@@ -91,39 +91,6 @@ lib/
 └── main.dart      # Application entry point
 ```
 
-## Dependencies
-
-### Main Dependencies
-- `flutter_modular`: ^6.3.4 - For modular architecture
-- `bloc`: ^8.1.4 - For state management
-- `dio`: ^5.4.0 - For HTTP requests
-- `dartz`: ^0.10.1 - For functional programming
-- `freezed`: ^2.5.2 - For immutable models
-- `lottie`: ^3.3.1 - For animations
-- `shared_preferences`: ^2.5.3 - For local storage
-
-### Dev Dependencies
-- `build_runner`: ^2.4.11 - For code generation
-- `mockito`: ^5.4.4 - For testing
-- `flutter_lints`: ^4.0.0 - For code quality
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Authors
-
-| [<img src="https://github.com/wilver06w.png" width=115><br><sub>Your Name</sub>](https://github.com/wilver06w) |
-|:-------------------------------------------------------------------------------------------------------------------:|
-
-## Roadmap
-
-- [ ] Add crash report export functionality
-- [ ] Implement crash report search
 
 ## Diagrama de Clases
 
@@ -225,3 +192,37 @@ El diagrama muestra la arquitectura de la aplicación siguiendo los principios d
 8. **UI Components**: Componentes de la interfaz de usuario:
    - CrashReportScreen: Pantalla principal para mostrar los reportes.
 
+
+## Dependencies
+
+### Main Dependencies
+- `flutter_modular`: ^6.3.4 - For modular architecture
+- `bloc`: ^8.1.4 - For state management
+- `dio`: ^5.4.0 - For HTTP requests
+- `dartz`: ^0.10.1 - For functional programming
+- `freezed`: ^2.5.2 - For immutable models
+- `lottie`: ^3.3.1 - For animations
+- `shared_preferences`: ^2.5.3 - For local storage
+
+### Dev Dependencies
+- `build_runner`: ^2.4.11 - For code generation
+- `mockito`: ^5.4.4 - For testing
+- `flutter_lints`: ^4.0.0 - For code quality
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Authors
+
+| [<img src="https://github.com/wilver06w.png" width=115><br><sub>Your Name</sub>](https://github.com/wilver06w) |
+|:-------------------------------------------------------------------------------------------------------------------:|
+
+## Roadmap
+
+- [ ] Add crash report export functionality
+- [ ] Implement crash report search
