@@ -1,2 +1,0 @@
-/Users/wilverrojas/Documents/GitHub/crash_inspector/android/app/.cxx/Debug/3r176tl4/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Users/wilverrojas/Documents/GitHub/crash_inspector/android/app/.cxx/Debug/3r176tl4/armeabi-v7a/CMakeFiles/rebuild_cache.dir
