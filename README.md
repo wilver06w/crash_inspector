@@ -46,11 +46,11 @@
   <a href="#hoja-de-ruta">Hoja de Ruta</a>
 </p>
 
-## 🧩 Resumen
+## Resumen
 
 Inspector de Errores es una aplicación Flutter diseñada para ayudar a los usuarios a inspeccionar y analizar reportes de errores. Utiliza patrones modernos de arquitectura en Flutter y buenas prácticas para ofrecer una base de código robusta y mantenible.
 
-## ✨ Características
+## Características
 
 - Arquitectura moderna utilizando el patrón BLoC
 - Sistema de enrutamiento modular
@@ -60,7 +60,7 @@ Inspector de Errores es una aplicación Flutter diseñada para ayudar a los usua
 - Implementación basada en Material Design
 - Soporte para animaciones con Lottie
 
-## ✅ Requisitos Previos
+## Requisitos Previos
 
 ### Este proyecto requiere:
 - [Flutter SDK] versión 3.7.2 o superior
@@ -68,7 +68,7 @@ Inspector de Errores es una aplicación Flutter diseñada para ayudar a los usua
 - [Android Studio] o [VS Code] con extensiones de Flutter
 - [Git] para control de versiones
 
-## ⚙️ Instalación
+## Instalación
 
 Para clonar esta aplicación desde la línea de comandos:
 
