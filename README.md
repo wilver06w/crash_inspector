@@ -1,14 +1,14 @@
-# Crash Inspector
+# Inspector de Errores
 
 <h1 align="center">
   <br>
   <a href="https://flutter.dev/"><img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" width="200"></a>
   <br>
-  Crash Inspector
+  Inspector de Errores
   <br>
 </h1>
 
-<h4 align="center">A Flutter application for crash inspection and analysis.</h4>
+<h4 align="center">Una aplicación Flutter para la inspección y análisis de errores.</h4>
 
 <p align="center">
   <a href="https://flutter.dev/">
@@ -18,67 +18,66 @@
     <img src="https://img.shields.io/badge/Dart-3.7+-blue.svg" alt="Dart">
   </a>
   <a href="https://pub.dev/packages/bloc">
-    <img src="https://img.shields.io/badge/State_Management-BLoC-purple.svg" alt="BLoC">
+    <img src="https://img.shields.io/badge/Gestión_de_Estado-BLoC-purple.svg" alt="BLoC">
   </a>
   <a href="https://pub.dev/packages/flutter_modular">
-    <img src="https://img.shields.io/badge/Architecture-Modular-green.svg" alt="Modular">
+    <img src="https://img.shields.io/badge/Arquitectura-Modular-green.svg" alt="Modular">
   </a>
   <a href="https://pub.dev/packages/dio">
     <img src="https://img.shields.io/badge/HTTP-Dio-blue.svg" alt="Dio">
   </a>
   <a href="https://pub.dev/packages/freezed">
-    <img src="https://img.shields.io/badge/Code_Generation-Freezed-orange.svg" alt="Freezed">
+    <img src="https://img.shields.io/badge/Generación_de_Código-Freezed-orange.svg" alt="Freezed">
   </a>
   <a href="https://pub.dev/packages/lottie">
-    <img src="https://img.shields.io/badge/Animations-Lottie-green.svg" alt="Lottie">
+    <img src="https://img.shields.io/badge/Animaciones-Lottie-green.svg" alt="Lottie">
   </a>
 </p>
 
 <p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#features">Features</a> •
-  <a href="#prerequisites">Prerequisites</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#project-structure">Project Structure</a> •
-  <a href="#dependencies">Dependencies</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#authors">Authors</a> •
-  <a href="#roadmap">Roadmap</a>
+  <a href="#resumen">Resumen</a> •
+  <a href="#características">Características</a> •
+  <a href="#requisitos-previos">Requisitos Previos</a> •
+  <a href="#instalación">Instalación</a> •
+  <a href="#estructura-del-proyecto">Estructura del Proyecto</a> •
+  <a href="#dependencias">Dependencias</a> •
+  <a href="#contribuciones">Contribuciones</a> •
+  <a href="#autores">Autores</a> •
+  <a href="#hoja-de-ruta">Hoja de Ruta</a>
 </p>
 
-![screenshot](demo/demo.gif)
+## 🧩 Resumen
 
-## Overview
+Inspector de Errores es una aplicación Flutter diseñada para ayudar a los usuarios a inspeccionar y analizar reportes de errores. Utiliza patrones modernos de arquitectura en Flutter y buenas prácticas para ofrecer una base de código robusta y mantenible.
 
-Crash Inspector is a Flutter application designed to help users inspect and analyze crash reports. The application uses modern Flutter architecture patterns and best practices to provide a robust and maintainable codebase.
+## ✨ Características
 
-## Features
+- Arquitectura moderna utilizando el patrón BLoC
+- Sistema de enrutamiento modular
+- Soporte para localización (traducción de idiomas)
+- Sistema de caché
+- Mecanismo inteligente de reintentos para peticiones de red
+- Implementación basada en Material Design
+- Soporte para animaciones con Lottie
 
-- Modern architecture using BLoC pattern
-- Modular routing system
-- Localization support
-- Caching system
-- Smart retry mechanism for network requests
-- Material Design implementation
-- Lottie animations support
+## ✅ Requisitos Previos
 
-## Prerequisites
+### Este proyecto requiere:
+- [Flutter SDK] versión 3.7.2 o superior
+- [Dart SDK] versión 3.7.2 o superior
+- [Android Studio] o [VS Code] con extensiones de Flutter
+- [Git] para control de versiones
 
-### This project requires:
-- [Flutter SDK] version 3.7.2 or higher
-- [Dart SDK] version 3.7.2 or higher
-- [Android Studio] or [VS Code] with Flutter extensions
-- [Git] for version control
+## ⚙️ Instalación
 
-## Installation
-
-Para clonar está aplicación desde la linea de comando:
+Para clonar esta aplicación desde la línea de comandos:
 
 ```bash
 git clone https://github.com/yourusername/crash_inspector.git
 cd crash_inspector
 flutter pub get
 flutter run
+
 ```
 
 ## Project Structure
@@ -125,3 +124,4 @@ lib/
 
 - [ ] Add crash report export functionality
 - [ ] Implement crash report search
+
