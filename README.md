@@ -125,3 +125,103 @@ lib/
 - [ ] Add crash report export functionality
 - [ ] Implement crash report search
 
+## Diagrama de Clases
+
+```mermaid
+classDiagram
+    %% Main Application
+    class App {
+        +main()
+        +configureDependencies()
+    }
+
+    %% Core Modules
+    class CoreModule {
+        +provides()
+    }
+
+    %% Features
+    class CrashReportFeature {
+        +CrashReportScreen
+        +CrashReportBloc
+        +CrashReportRepository
+    }
+
+    %% BLoC Pattern
+    class CrashReportBloc {
+        -CrashReportRepository _repository
+        +loadCrashReports()
+        +filterCrashReports()
+        +exportCrashReport()
+    }
+
+    %% Repository Pattern
+    class CrashReportRepository {
+        -CrashReportDataSource _dataSource
+        +getCrashReports()
+        +saveCrashReport()
+        +updateCrashReport()
+    }
+
+    %% Data Sources
+    class CrashReportDataSource {
+        +Dio _dio
+        +getCrashReports()
+        +saveCrashReport()
+    }
+
+    %% Models
+    class CrashReport {
+        +String id
+        +String title
+        +String description
+        +DateTime timestamp
+        +String status
+        +toJson()
+        +fromJson()
+    }
+
+    %% UI Components
+    class CrashReportScreen {
+        -CrashReportBloc _bloc
+        +build()
+        +_buildCrashList()
+        +_buildCrashDetails()
+    }
+
+    %% Relationships
+    App --> CoreModule
+    CoreModule --> CrashReportFeature
+    CrashReportFeature --> CrashReportBloc
+    CrashReportFeature --> CrashReportScreen
+    CrashReportBloc --> CrashReportRepository
+    CrashReportRepository --> CrashReportDataSource
+    CrashReportRepository --> CrashReport
+    CrashReportScreen --> CrashReportBloc
+```
+
+### Descripción del Diagrama
+
+El diagrama muestra la arquitectura de la aplicación siguiendo los principios de Clean Architecture y el patrón BLoC:
+
+1. **App**: Punto de entrada de la aplicación que configura las dependencias y módulos.
+
+2. **CoreModule**: Módulo principal que proporciona las dependencias globales.
+
+3. **Features**: Módulos de características específicas (en este caso, CrashReportFeature).
+
+4. **BLoC**: Implementación del patrón BLoC para la gestión del estado:
+   - CrashReportBloc: Maneja la lógica de negocio y el estado de los reportes de errores.
+
+5. **Repository**: Capa de abstracción para el acceso a datos:
+   - CrashReportRepository: Coordina las operaciones de datos.
+
+6. **Data Sources**: Fuentes de datos (API, base de datos local):
+   - CrashReportDataSource: Implementa las operaciones de red usando Dio.
+
+7. **Models**: Entidades de dominio:
+   - CrashReport: Modelo de datos para los reportes de errores.
+
+8. **UI Components**: Componentes de la interfaz de usuario:
+   - CrashReportScreen: Pantalla principal para mostrar los reportes.
+
