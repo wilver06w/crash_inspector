@@ -1,4 +1,4 @@
-# Inspector de Errores
+# Crash inspector
 
 <h1 align="center">
   <br>
