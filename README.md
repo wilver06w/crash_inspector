@@ -46,6 +46,8 @@
   <a href="#roadmap">Roadmap</a>
 </p>
 
+![screenshot](demo/demo.gif)
+
 ## Overview
 
 Crash Inspector is a Flutter application designed to help users inspect and analyze crash reports. The application uses modern Flutter architecture patterns and best practices to provide a robust and maintainable codebase.
@@ -121,9 +123,5 @@ lib/
 
 ## Roadmap
 
-- [ ] Add crash report visualization
-- [ ] Implement crash analytics dashboard
 - [ ] Add crash report export functionality
-- [ ] Implement crash report search and filtering
-- [ ] Add user authentication system
-- [ ] Implement crash report sharing
+- [ ] Implement crash report search
