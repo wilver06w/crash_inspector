@@ -116,7 +116,7 @@ lib/
 
 ## Authors
 
-| [<img src="https://github.com/yourusername.png" width=115><br><sub>Your Name</sub>](https://github.com/yourusername) |
+| [<img src="https://github.com/wilver06w.png" width=115><br><sub>Your Name</sub>](https://github.com/wilver06w) |
 |:-------------------------------------------------------------------------------------------------------------------:|
 
 ## Roadmap
