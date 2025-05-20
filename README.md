@@ -59,10 +59,7 @@ Crash Inspector es una aplicación Flutter diseñada para ayudar a los usuarios 
 
 - Arquitectura moderna utilizando el patrón BLoC
 - Sistema de enrutamiento modular
-- Soporte para localización (traducción de idiomas)
-- Sistema de caché
 - Mecanismo inteligente de reintentos para peticiones de red
-- Implementación basada en Material Design
 - Soporte para animaciones con Lottie
 
 ## Requisitos Previos
@@ -78,7 +75,7 @@ Crash Inspector es una aplicación Flutter diseñada para ayudar a los usuarios 
 Para clonar esta aplicación desde la línea de comandos:
 
 ```bash
-git clone https://github.com/yourusername/crash_inspector.git
+git clone https://github.com/wilver06w/crash_inspector.git
 cd crash_inspector
 flutter pub get
 flutter run
@@ -210,14 +207,6 @@ El diagrama muestra la arquitectura de la aplicación siguiendo los principios d
 - `build_runner`: ^2.4.11 - Para generación de código
 - `mockito`: ^5.4.4 - Para pruebas
 - `flutter_lints`: ^4.0.0 - Para calidad de código
-
-## Contribuciones
-
-1. Hacer fork del repositorio
-2. Crear una rama para tu característica (`git checkout -b feature/caracteristica-increible`)
-3. Hacer commit de tus cambios (`git commit -m 'Agregar característica increíble'`)
-4. Hacer push a la rama (`git push origin feature/caracteristica-increible`)
-5. Abrir un Pull Request
 
 ## Autores
 
