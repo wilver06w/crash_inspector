@@ -1,5 +1,13 @@
 # Crash Inspector
 
+<h1 align="center">
+  <br>
+  <a href="https://flutter.dev/"><img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" width="200"></a>
+  <br>
+  Crash Inspector
+  <br>
+</h1>
+
 <h4 align="center">A Flutter application for crash inspection and analysis.</h4>
 
 <p align="center">
@@ -15,6 +23,27 @@
   <a href="https://pub.dev/packages/flutter_modular">
     <img src="https://img.shields.io/badge/Architecture-Modular-green.svg" alt="Modular">
   </a>
+  <a href="https://pub.dev/packages/dio">
+    <img src="https://img.shields.io/badge/HTTP-Dio-blue.svg" alt="Dio">
+  </a>
+  <a href="https://pub.dev/packages/freezed">
+    <img src="https://img.shields.io/badge/Code_Generation-Freezed-orange.svg" alt="Freezed">
+  </a>
+  <a href="https://pub.dev/packages/lottie">
+    <img src="https://img.shields.io/badge/Animations-Lottie-green.svg" alt="Lottie">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#features">Features</a> •
+  <a href="#prerequisites">Prerequisites</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#dependencies">Dependencies</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#authors">Authors</a> •
+  <a href="#roadmap">Roadmap</a>
 </p>
 
 ## Overview
@@ -31,30 +60,22 @@ Crash Inspector is a Flutter application designed to help users inspect and anal
 - Material Design implementation
 - Lottie animations support
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+### This project requires:
+- [Flutter SDK] version 3.7.2 or higher
+- [Dart SDK] version 3.7.2 or higher
+- [Android Studio] or [VS Code] with Flutter extensions
+- [Git] for version control
 
-- Flutter SDK (^3.7.2)
-- Dart SDK (^3.7.2)
-- Android Studio / VS Code
-- Git
+## Installation
 
-### Installation
+Para clonar está aplicación desde la linea de comando:
 
-1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/crash_inspector.git
 cd crash_inspector
-```
-
-2. Install dependencies:
-```bash
 flutter pub get
-```
-
-3. Run the app:
-```bash
 flutter run
 ```
 
@@ -93,11 +114,16 @@ lib/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
+## Authors
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+| [<img src="https://github.com/yourusername.png" width=115><br><sub>Your Name</sub>](https://github.com/yourusername) |
+|:-------------------------------------------------------------------------------------------------------------------:|
 
-## Acknowledgments
+## Roadmap
 
-- Flutter team for the amazing framework
-- All contributors who have helped shape this project
+- [ ] Add crash report visualization
+- [ ] Implement crash analytics dashboard
+- [ ] Add crash report export functionality
+- [ ] Implement crash report search and filtering
+- [ ] Add user authentication system
+- [ ] Implement crash report sharing
