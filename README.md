@@ -34,6 +34,7 @@
   </a>
 </p>
 
+
 <p align="center">
   <a href="#resumen">Resumen</a> •
   <a href="#características">Características</a> •
@@ -45,6 +46,9 @@
   <a href="#autores">Autores</a> •
   <a href="#hoja-de-ruta">Hoja de Ruta</a>
 </p>
+
+
+![screenshot](demo/demo.gif)
 
 ## Resumen
 
