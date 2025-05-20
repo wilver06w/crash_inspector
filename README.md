@@ -4,7 +4,7 @@
   <br>
   <a href="https://flutter.dev/"><img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" width="200"></a>
   <br>
-  Inspector de Errores
+  Crash Inspector
   <br>
 </h1>
 
