@@ -47,9 +47,9 @@
   <a href="#hoja-de-ruta">Hoja de Ruta</a>
 </p>
 
-<h1 align="center">
-![screenshot](demo/demo.gif)
-</h1>
+<p align="center">
+  <img src="demo/demo.gif" alt="Demo de la aplicación">
+</p>
 
 ## Resumen
 
