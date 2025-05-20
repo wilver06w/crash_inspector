@@ -47,8 +47,9 @@
   <a href="#hoja-de-ruta">Hoja de Ruta</a>
 </p>
 
-
+<h1 align="center">
 ![screenshot](demo/demo.gif)
+</h1>
 
 ## Resumen
 
