@@ -4,7 +4,7 @@
   <br>
   <a href="https://flutter.dev/"><img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" width="200"></a>
   <br>
-  Crash Inspector
+  Inspector de Errores
   <br>
 </h1>
 
@@ -82,10 +82,9 @@ git clone https://github.com/yourusername/crash_inspector.git
 cd crash_inspector
 flutter pub get
 flutter run
-
 ```
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 lib/
@@ -95,7 +94,6 @@ lib/
 ├── presentation/  # UI layer (screens, widgets)
 └── main.dart      # Application entry point
 ```
-
 
 ## Diagrama de Clases
 
@@ -161,7 +159,7 @@ classDiagram
         +_buildCrashDetails()
     }
 
-    %% Relationships
+    %% Relaciones
     App --> CoreModule
     CoreModule --> CrashReportFeature
     CrashReportFeature --> CrashReportBloc
@@ -197,37 +195,36 @@ El diagrama muestra la arquitectura de la aplicación siguiendo los principios d
 8. **UI Components**: Componentes de la interfaz de usuario:
    - CrashReportScreen: Pantalla principal para mostrar los reportes.
 
+## Dependencias
 
-## Dependencies
+### Dependencias Principales
+- `flutter_modular`: ^6.3.4 - Para arquitectura modular
+- `bloc`: ^8.1.4 - Para gestión de estado
+- `dio`: ^5.4.0 - Para peticiones HTTP
+- `dartz`: ^0.10.1 - Para programación funcional
+- `freezed`: ^2.5.2 - Para modelos inmutables
+- `lottie`: ^3.3.1 - Para animaciones
+- `shared_preferences`: ^2.5.3 - Para almacenamiento local
 
-### Main Dependencies
-- `flutter_modular`: ^6.3.4 - For modular architecture
-- `bloc`: ^8.1.4 - For state management
-- `dio`: ^5.4.0 - For HTTP requests
-- `dartz`: ^0.10.1 - For functional programming
-- `freezed`: ^2.5.2 - For immutable models
-- `lottie`: ^3.3.1 - For animations
-- `shared_preferences`: ^2.5.3 - For local storage
+### Dependencias de Desarrollo
+- `build_runner`: ^2.4.11 - Para generación de código
+- `mockito`: ^5.4.4 - Para pruebas
+- `flutter_lints`: ^4.0.0 - Para calidad de código
 
-### Dev Dependencies
-- `build_runner`: ^2.4.11 - For code generation
-- `mockito`: ^5.4.4 - For testing
-- `flutter_lints`: ^4.0.0 - For code quality
+## Contribuciones
 
-## Contributing
+1. Hacer fork del repositorio
+2. Crear una rama para tu característica (`git checkout -b feature/caracteristica-increible`)
+3. Hacer commit de tus cambios (`git commit -m 'Agregar característica increíble'`)
+4. Hacer push a la rama (`git push origin feature/caracteristica-increible`)
+5. Abrir un Pull Request
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Autores
 
-## Authors
-
-| [<img src="https://github.com/wilver06w.png" width=115><br><sub>Your Name</sub>](https://github.com/wilver06w) |
+| [<img src="https://github.com/wilver06w.png" width=115><br><sub>Wilver Rojas</sub>](https://github.com/wilver06w) |
 |:-------------------------------------------------------------------------------------------------------------------:|
 
-## Roadmap
+## Hoja de Ruta
 
-- [ ] Add crash report export functionality
-- [ ] Implement crash report search
+- [ ] Agregar funcionalidad de exportación de reportes de errores
+- [ ] Implementar búsqueda de reportes de errores
