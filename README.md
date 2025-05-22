@@ -57,7 +57,7 @@ Crash Inspector es una aplicación Flutter diseñada para ayudar a los usuarios 
 
 ## Características
 
-- Arquitectura moderna utilizando el patrón BLoC
+- Arquitectura moderna utilizando Clean Architecture
 - Sistema de enrutamiento modular
 - Mecanismo inteligente de reintentos para peticiones de red
 - Soporte para animaciones con Lottie
