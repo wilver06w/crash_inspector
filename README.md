@@ -85,11 +85,11 @@ flutter run
 
 ```
 lib/
-├── core/           # Core functionality and utilities
-├── data/          # Data layer (repositories, data sources)
-├── domain/        # Business logic and entities
-├── presentation/  # UI layer (screens, widgets)
-└── main.dart      # Application entry point
+├── src/  
+├──── app/          
+├──── features/   
+├──── shared/
+└── main.dart
 ```
 
 ## Diagrama de Clases
